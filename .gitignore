@@ -17,10 +17,6 @@
 # Recordings can get excessive in size
 /[Rr]ecordings/
 
-# Unity metadata files
-# (These are large and can cause issues with Git)
-# Assets/Plugins/*/package.json
-# Assets/Plugins/*/manifest.json
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
 
