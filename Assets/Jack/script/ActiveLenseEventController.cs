@@ -9,21 +9,25 @@ public class LenseEventController : MonoBehaviour
     public Button activateButton;  // Button to trigger AR image detection
     public ImageTargetBehaviour imageTarget;  // The image target to be detected from the Vuforia database
     public GameObject objectToShow;  // The object that should appear when the image is detected (e.g., an envelope)
-    public GameObject textToShow; // UI Text object that shows the text when the envelope is clicked
+    public GameObject dialogPanel; // The dialog panel that will pop up when the envelope is clicked
+    public Button closeButton; // The button to close the dialog panel
 
     private bool isDetectionActive = false;
 
     void Start()
     {
-        // Initially hide the object attached to the image and the text
+        // Initially hide the object attached to the image and the dialog panel
         objectToShow.SetActive(false);
-        textToShow.SetActive(false);
+        dialogPanel.SetActive(false);
 
         // Initially disable the ImageTargetBehaviour (no detection)
         imageTarget.enabled = false;
 
         // Add listener to the button click event
         activateButton.onClick.AddListener(ToggleImageDetection);
+
+        // Add listener to the close button click event
+        closeButton.onClick.AddListener(CloseDialogPanel);
     }
 
     // This method toggles image detection on and off
@@ -49,9 +53,9 @@ public class LenseEventController : MonoBehaviour
             // Unsubscribe from the target status change events
             imageTarget.OnTargetStatusChanged -= OnTrackableStatusChanged;
 
-            // Hide the object and text since detection is deactivated
+            // Hide the object and dialog panel since detection is deactivated
             objectToShow.SetActive(false);
-            textToShow.SetActive(false);
+            dialogPanel.SetActive(false);
         }
     }
 
@@ -65,7 +69,7 @@ public class LenseEventController : MonoBehaviour
         {
             OnImageTargetDetected();
         }
-        // If the target is lost or the tracking is limited, hide the object
+        // If the target is lost or the tracking is limited, hide the object and dialog panel
         else if (status == Status.LIMITED || status == Status.NO_POSE)
         {
             OnImageTargetLost();
@@ -84,9 +88,9 @@ public class LenseEventController : MonoBehaviour
     void OnImageTargetLost()
     {
         Debug.Log("Image target lost.");
-        // Hide the object attached to the image
+        // Hide the object attached to the image and the dialog panel
         objectToShow.SetActive(false);
-        textToShow.SetActive(false); // Hide the text if the object is lost
+        dialogPanel.SetActive(false); // Hide the dialog panel when the target is lost
     }
 
     // Update method to detect clicks on the object
@@ -114,9 +118,17 @@ public class LenseEventController : MonoBehaviour
     void OnObjectClicked()
     {
         Debug.Log("Envelope clicked!");
-        // Show the text when the envelope is clicked
-        textToShow.SetActive(true);
+        // Show the dialog panel when the envelope is clicked
+        dialogPanel.SetActive(true);
         objectToShow.SetActive(false);
+    }
+
+    // Called to close the dialog panel
+    void CloseDialogPanel()
+    {
+        Debug.Log("Dialog panel closed!");
+        // Hide the dialog panel
+        dialogPanel.SetActive(false);
     }
 
     // Cleanup the event subscription when the script is destroyed
