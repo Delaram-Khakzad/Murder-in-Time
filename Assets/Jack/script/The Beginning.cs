@@ -8,13 +8,14 @@ public class TheBeginning : MonoBehaviour
     public GameObject fullScreenDimPanel; // The full screen dimming panel
     public GameObject highlightPanel; // The panel to highlight
     public GameObject nextButton; // The panel to highlight
+    public GameObject textPanel; // The panel to highlight
     public TextMeshProUGUI highlightText; // Text component to show introduction
     public string introductionText = "This is the introduction to the highlighted panel."; // Default introduction text
     public float dimDuration = 1f; // Duration of dimming effect
     public Color dimColor = new Color(0, 0, 0, 0.7f); // Default dim color
-
+    public GameObject[] ToActivate;   // Assign the panel you want to activate
     private Color originalDimColor;
-
+    public Button closeButton;              // Button to close the highlight
     void Start()
     {
         // Set the dim panel initially to be invisible
@@ -24,6 +25,11 @@ public class TheBeginning : MonoBehaviour
         // Initially hide the highlight panel
         highlightPanel.SetActive(false);
         ShowHighlightPanel();
+        if (closeButton != null)
+        {
+            // Assign the CloseHighlight method to the button's OnClick event
+            closeButton.onClick.AddListener(HideHighlightPanel);
+        }
     }
 
     // Function to dim the screen and highlight the panel
@@ -72,11 +78,16 @@ public class TheBeginning : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Lerp(dimColor.a, 0, elapsedTime / dimDuration);
             dimImage.color = new Color(dimColor.r, dimColor.g, dimColor.b, alpha);
+            // Set ToActivate active
+
             yield return null;
         }
-
+        if (ToActivate != null)
+        {
+            for (int i = 0; i < ToActivate.Length; i++) { ToActivate[i].SetActive(true); }
+        }
         // Disable both panels after undimming
-        fullScreenDimPanel.SetActive(false);
-        highlightPanel.SetActive(false);
+        textPanel.SetActive(false);
+
     }
 }

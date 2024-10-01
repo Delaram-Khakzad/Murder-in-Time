@@ -5,11 +5,17 @@ public class TapToStart : MonoBehaviour
 {
     public TextMeshProUGUI[] textsToFadeIn; // Array to hold the texts that will fade in
     public TextMeshProUGUI tapToStartText; // The "Tap to continue" text
-    public float fadeDuration = 2.0f; // Duration for each text to fade in
-    public float delayBetweenTexts = 1.0f; // Delay between fading in texts
-    public float breathing_speed = 0.4f;
+    public float fadeDuration = 0.6f; // Duration for each text to fade in
+    public float delayBetweenTexts = 0.2f; // Delay between fading in texts
+    public float breathing_speed = 0.6f;
     public GameObject ToDeactivate; // Assign the panel you want to deactivate
-    public GameObject ToActivate;   // Assign the panel you want to activate
+    public GameObject[] ToActivate; // Assign the panel you want to activate
+
+    // Audio components
+    public AudioSource audioSource;  // Reference to the AudioSource component
+    public AudioClip fadeInSound;    // Sound effect to play when fading in starts
+    public AudioSource tapToContinueSound;  // Reference to the AudioSource component
+    public AudioClip tapToContinueClip;    // Sound effect to play when fading in starts
     void Start()
     {
         // Initially set the texts to transparent
@@ -19,13 +25,16 @@ public class TapToStart : MonoBehaviour
         }
 
         SetTextAlpha(tapToStartText, 0); // Make "Tap to continue" invisible
-        OnTap();
+        BeginTextIntro();
     }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0)) // Detects a tap or mouse click
         {
             // Set ToDeactivate inactive
+            audioSource.Stop();
+            tapToContinueSound.PlayOneShot(tapToContinueClip);
             if (ToDeactivate != null)
             {
                 ToDeactivate.SetActive(false);
@@ -34,22 +43,37 @@ public class TapToStart : MonoBehaviour
             // Set ToActivate active
             if (ToActivate != null)
             {
-                ToActivate.SetActive(true);
+                for (int i = 0; i < ToActivate.Length; i++) { ToActivate[i].SetActive(true); }
             }
         }
     }
-    public void OnTap() // Call this function after tap
+
+    public void BeginTextIntro() // Call this function after tap
     {
         StartCoroutine(FadeInTexts());
     }
 
     IEnumerator FadeInTexts()
     {
+        // Play sound when FadeInText begins
+        if (audioSource != null && fadeInSound != null)
+        {
+            audioSource.clip = fadeInSound;
+            audioSource.loop = true;  // Set to loop in case the fade takes time
+            audioSource.Play();  // Start playing the sound
+        }
+
         // Fade in each text one by one
         foreach (var text in textsToFadeIn)
         {
             yield return StartCoroutine(FadeInText(text));
             yield return new WaitForSeconds(delayBetweenTexts);
+        }
+
+        // Stop the sound after all texts have faded in
+        if (audioSource != null)
+        {
+            audioSource.Stop();
         }
 
         // After all texts fade in, show the "Tap to continue" text with a breathing effect

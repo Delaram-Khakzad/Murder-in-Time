@@ -9,11 +9,11 @@ public class TapToContinue : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) // Detects a tap or mouse click
         {
-            StartGame();
+            Next();
         }
     }
 
-    void StartGame()
+    void Next()
     {
         // Set ToDeactivate inactive
         if (ToDeactivate != null)
