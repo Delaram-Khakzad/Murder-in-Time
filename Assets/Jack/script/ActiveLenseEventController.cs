@@ -206,8 +206,9 @@ public class ActiveLenseEventController : MonoBehaviour
             whiteScreenImage.color = color;
 
             // Stop rotation at the end or continue depending on your preference
-            obj.transform.rotation = Quaternion.Euler(0f, 360f, 0f);  // Ensure it completes the 360-degree rotation
+            //obj.transform.rotation = Quaternion.Euler(0f, 360f, 0f);  // Ensure it completes the 360-degree rotation
             obj.SetActive(false);
+            objectsToShow[index].transform.rotation = originalRotations[index];
             dialogPanel[index].SetActive(true);
         }
     }
