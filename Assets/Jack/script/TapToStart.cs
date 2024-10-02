@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.Video;  // Make sure to include this namespace for VideoPlayer
+
 public class TapToStart : MonoBehaviour
 {
     public TextMeshProUGUI[] textsToFadeIn; // Array to hold the texts that will fade in
@@ -10,7 +12,7 @@ public class TapToStart : MonoBehaviour
     public float breathing_speed = 0.6f;
     public GameObject ToDeactivate; // Assign the panel you want to deactivate
     public GameObject[] ToActivate; // Assign the panel you want to activate
-
+    public VideoPlayer videoPlayer;  // Reference to the VideoPlayer component
     // Audio components
     public AudioSource audioSource;  // Reference to the AudioSource component
     public AudioClip fadeInSound;    // Sound effect to play when fading in starts
@@ -33,6 +35,11 @@ public class TapToStart : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) // Detects a tap or mouse click
         {
             // Set ToDeactivate inactive
+            if (videoPlayer != null && videoPlayer.isPlaying)
+            {
+                videoPlayer.Stop();
+                Debug.Log("Video stopped.");
+            }
             audioSource.Stop();
             tapToContinueSound.PlayOneShot(tapToContinueClip);
             if (ToDeactivate != null)
