@@ -9,6 +9,8 @@ public class TheBeginning : MonoBehaviour
     public GameObject highlightPanel; // The panel to highlight
     public GameObject nextButton; // The panel to highlight
     public GameObject textPanel; // The panel to highlight
+    public GameObject textBackground; // The panel to highlight
+    public GameObject nButton; // The panel to highlight
     public TextMeshProUGUI highlightText; // Text component to show introduction
     public string introductionText = "This is the introduction to the highlighted panel."; // Default introduction text
     public float dimDuration = 1f; // Duration of dimming effect
@@ -57,7 +59,9 @@ public class TheBeginning : MonoBehaviour
 
         // Show the highlighted panel with the introduction
         highlightPanel.SetActive(true);
+        textBackground.SetActive(true);
         highlightText.text = introductionText;
+        nButton.SetActive(true);
         nextButton.SetActive(true);
     }
 
