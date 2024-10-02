@@ -17,7 +17,8 @@ public class ActiveLenseEventController : MonoBehaviour
     public GameObject whiteScreenPanel; 
     private bool isDetectionActive = false;
     private Quaternion[] originalRotations;  // Array to store the original rotations of each object
-
+    public AudioSource audioSource;  // Reference to the AudioSource component
+    public AudioClip crystalballRotating;    // Sound effect
     void Start()
     {
         // Initialize the originalRotations array
@@ -168,12 +169,14 @@ public class ActiveLenseEventController : MonoBehaviour
     {
         GameObject obj = objectsToShow[index];
         float rotationSpeed = 60f;  // Degrees per second
-        float duration = 2.0f;  // The fade-in duration in seconds
+        float duration = 3.5f;  // The fade-in duration in seconds
         float elapsed = 0.0f;
 
         // Get the white screen panel and the image component
         Image whiteScreenImage = whiteScreenPanel.GetComponent<Image>();
-
+        audioSource.clip = crystalballRotating;
+        audioSource.loop = true;  // Set to loop in case the fade takes time
+        audioSource.Play();  // Start playing the sound
         // Ensure the white screen panel is active and set its alpha to 0
         if (whiteScreenPanel != null)
         {
@@ -197,7 +200,7 @@ public class ActiveLenseEventController : MonoBehaviour
 
                 yield return null;  // Wait for the next frame
             }
-
+            audioSource.Stop();  // Start playing the sound
             // Ensure the screen is fully white at the end
             color.a = 1.0f;
             whiteScreenImage.color = color;
