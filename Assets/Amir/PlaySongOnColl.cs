@@ -4,9 +4,10 @@ public class PlaySongOnCollision : MonoBehaviour
 {
     public AudioSource audioSource;
 
-    private void OnCollisionEnter(Collision collision)
+    // This method is called when the trigger collides with another object
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision Detected");
+        Debug.Log("Trigger Detected with: " + other.gameObject.name);
 
         if (audioSource != null && !audioSource.isPlaying)
         {
