@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Jack/Scene/PJ1.unity
     guid: ad011750b787c3045b1f092adfecbec5
   - enabled: 0
-    path: Assets/Amir/Jack + Amir.unity
+    path: Assets/Amir/old assets/Jack + Amir.unity
     guid: 658b903f904fe4613bcfe831f5ea9e1c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Amir/Hallway.unity
     guid: 958d4f8f0aee747b38db556f71584897
+  - enabled: 1
+    path: Assets/Amir/hallway office.unity
+    guid: a22229d462ac747cf82e50250f5011ea
   m_configObjects: {}
