@@ -6,6 +6,14 @@ TagManager:
   tags:
   - S0toS1
   - S1toS2
+  - showBoard
+  - MazeWall
+  - Checkpoint
+  - S2toS3
+  - PitCollider
+  - EndZone
+  - S2toS4
+  - S3toS4
   layers:
   - Default
   - TransparentFX

@@ -496,6 +496,7 @@ RectTransform:
   - {fileID: 592763466}
   - {fileID: 1322464543}
   - {fileID: 1792447678}
+  - {fileID: 2009267508}
   - {fileID: 1461218965}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -882,8 +883,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 592763468}
   button: {fileID: 1792447679}
-  image: {fileID: 1322464542}
+  endImage: {fileID: 1322464542}
   panel: {fileID: 2122594375}
+  LensIcon: {fileID: 1461218964}
+  LensIconBorder: {fileID: 2009267507}
 --- !u!1 &611315497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,7 +1710,7 @@ GameObject:
   - component: {fileID: 1322464545}
   - component: {fileID: 1322464544}
   m_Layer: 5
-  m_Name: Image
+  m_Name: EndImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1783,7 +1786,8 @@ GameObject:
   - component: {fileID: 1326025884}
   - component: {fileID: 1326025887}
   - component: {fileID: 1326025886}
-  - component: {fileID: 1326025885}
+  - component: {fileID: 1326025888}
+  - component: {fileID: 1326025889}
   m_Layer: 5
   m_Name: ImageTarget
   m_TagString: Untagged
@@ -1806,25 +1810,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 492416084}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1326025885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326025883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 1326025887}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: detective-briefcase
-  mDatasetName: Vuforia/Murder-in-Time.xml
-  mCastedBehaviour: {fileID: 1326025887}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &1326025886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1895,7 +1880,43 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1326025885}
+  mPreview: {fileID: 1326025889}
+--- !u!114 &1326025888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326025883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99269da022dfa43bd80df289f300b059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lensIcon: {fileID: 1461218966}
+  lensIconBorder: {fileID: 2009267507}
+  coloredLensIcon: {fileID: 21300000, guid: b6e34960fccac4c998aa4a0b240941ce, type: 3}
+  blackWhiteLensIcon: {fileID: 21300000, guid: 9ea43a92cb498479b8ce2c8ae8a0b291, type: 3}
+  fillSpeed: 0.1
+--- !u!114 &1326025889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326025883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1326025887}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: detective-briefcase
+  mDatasetName: Vuforia/Murder-in-Time.xml
+  mCastedBehaviour: {fileID: 1326025887}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &1456640840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,7 +2068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1461218965
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2088,10 +2109,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 9ea43a92cb498479b8ce2c8ae8a0b291, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2372,7 +2393,7 @@ GameObject:
   - component: {fileID: 1792447680}
   - component: {fileID: 1792447679}
   m_Layer: 5
-  m_Name: UIcomplete
+  m_Name: UIcompleteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2828,6 +2849,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2009267507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009267508}
+  - component: {fileID: 2009267510}
+  - component: {fileID: 2009267509}
+  m_Layer: 5
+  m_Name: LensIconBorder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2009267508
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009267507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 415115261}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -250}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2009267509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009267507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: cf1304d94b47b4b2984aeb3841fae98b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 1
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2009267510
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009267507}
+  m_CullTransparentMesh: 1
 --- !u!1 &2122594375
 GameObject:
   m_ObjectHideFlags: 0

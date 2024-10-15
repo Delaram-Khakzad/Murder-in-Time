@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Vuforia;
+using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class LensIconController : MonoBehaviour
 {
-    public UnityEngine.UI.Image lensIcon;             // Black-and-white lens icon in the UI
+    public UnityEngine.UI.Image lensIcon;
+    public GameObject lensIconBorder;
     public Sprite coloredLensIcon;     // Colored lens icon (when activated)
     public Sprite blackWhiteLensIcon;  // Black-and-white lens icon
     public float fillSpeed = 0.5f;     // Speed at which the icon fills up
-    public Button lensButton;          // The button to activate/deactivate the lens
-    private bool isLensActive = false; // Track if the lens is active or not
     private ObserverBehaviour observerBehaviour;  // ObserverBehaviour for tracking
     private bool isFilling = false;
     private float fillAmount = 0f;
@@ -18,7 +19,6 @@ public class LensIconController : MonoBehaviour
     {
         // Ensure the button and icon are in the initial state
         lensIcon.fillAmount = 0f; // Start with the icon unfilled
-        lensButton.gameObject.SetActive(false); // Deactivate button until fully filled
 
         // Get the ObserverBehaviour (formerly TrackableBehaviour)
         observerBehaviour = GetComponent<ObserverBehaviour>();
@@ -36,14 +36,15 @@ public class LensIconController : MonoBehaviour
         {
             // Gradually fill the icon
             fillAmount += fillSpeed * Time.deltaTime;
-            lensIcon.fillAmount = fillAmount;
+            lensIcon.fillAmount = Mathf.Clamp01(fillAmount);
 
             if (fillAmount >= 1f)
             {
                 // Icon is fully filled, stop filling and activate the button
                 isFilling = false;
                 lensIcon.sprite = coloredLensIcon; // Switch to colored icon
-                lensButton.gameObject.SetActive(true); // Activate the button
+                lensIconBorder.SetActive(false);
+                SceneManager.LoadScene(1);
             }
         }
     }
@@ -59,25 +60,6 @@ public class LensIconController : MonoBehaviour
         {
             // Stop filling when the image is lost
             isFilling = false;
-        }
-    }
-
-    public void ToggleLens()
-    {
-        // This function will be called when the button is clicked
-        isLensActive = !isLensActive;
-
-        if (isLensActive)
-        {
-            // Activate the lens, set icon to colored
-            lensIcon.sprite = coloredLensIcon;
-            // Additional functionality to activate lens behavior can go here
-        }
-        else
-        {
-            // Deactivate the lens, set icon to black-and-white
-            lensIcon.sprite = blackWhiteLensIcon;
-            // Additional functionality to deactivate lens behavior can go here
         }
     }
 }

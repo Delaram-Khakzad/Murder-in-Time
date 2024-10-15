@@ -7,13 +7,17 @@ public class UIcompletion : MonoBehaviour
 {
     public VideoPlayer videoPlayer;  // Drag your VideoPlayer component here in the Inspector
     public Button button;            // Drag the Button UI element here
-    public GameObject image;         // Drag the Image UI element here
+    public GameObject endImage;         // Drag the endImage UI element here
     public GameObject panel; 
+    public GameObject LensIcon;
+    public GameObject LensIconBorder;
 
     void Start()
     {
         // Initially hide the button
-        image.SetActive(false);
+        endImage.SetActive(false);
+        LensIcon.SetActive(true);
+        LensIconBorder.SetActive(true);
         button.gameObject.SetActive(false);
 
         // Subscribe to the event when the video finishes playing
@@ -26,14 +30,14 @@ public class UIcompletion : MonoBehaviour
     void OnVideoEnd(VideoPlayer vp)
     {
         // Show the button when the video finishes
-        image.SetActive(true);
+        endImage.SetActive(true);
         button.gameObject.SetActive(true);
     }
 
     void UIcomplete()
     {
         videoPlayer.gameObject.SetActive(false);
-        image.SetActive(false);
+        endImage.SetActive(false);
         // Hide the button, then play the second video
         button.gameObject.SetActive(false);
         panel.SetActive(false);
