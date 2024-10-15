@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="locker_room" size="1.000000 0.750000" />
     <ImageTarget name="tarotcard" size="0.500000 0.957516" />
   </Tracking>
 </QCARConfig>
