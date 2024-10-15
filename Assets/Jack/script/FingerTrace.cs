@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FingerTrace : MonoBehaviour
 {
@@ -10,13 +11,14 @@ public class FingerTrace : MonoBehaviour
     private Boolean stop = false;
     public Camera arCamera;
     public Canvas worldCanvas; // 分配你的 World Space Canvas
+    public GameObject cursor; // Assign the cursor image here
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         fingerPositions = new List<Vector3>();
         lineRenderer.positionCount = 0; // Start with no positions
-        //lineRenderer.startWidth = 50.0f;
-        //lineRenderer.endWidth = 50.0f;
+
+        cursor.SetActive(false); // Hide cursor initially
     }
     public void stopdrawing()
     {
@@ -36,16 +38,19 @@ public class FingerTrace : MonoBehaviour
             Debug.Log("touch");
             Touch touch = Input.GetTouch(0);
             touchPosition = touch.position;
+            cursor.SetActive(true); // Show cursor when touch begins
         }
         // Or check for mouse input (for desktop testing)
         else if (Input.GetMouseButton(0))
         {
             Debug.Log("click");
             touchPosition = Input.mousePosition;
+            cursor.SetActive(true); // Show cursor when touch begins
         }
         else
         {
             Debug.Log("invalid");
+            cursor.SetActive(false); // Show cursor when touch begins
             return; // Exit Update if no valid input
         }
 
@@ -55,6 +60,7 @@ public class FingerTrace : MonoBehaviour
             if (hit.collider.gameObject == worldCanvas.gameObject || hit.collider.transform.IsChildOf(worldCanvas.transform))
             {
                 Vector2 intersectionPoint = hit.point;
+                cursor.transform.position= intersectionPoint;
                 //Debug.Log("射线与 Canvas 的交点在世界坐标：" + intersectionPoint);
                 if (fingerPositions.Count == 0 || Vector2.Distance(fingerPositions[fingerPositions.Count - 1], intersectionPoint) > 0.1f)
                 {
@@ -82,5 +88,6 @@ public class FingerTrace : MonoBehaviour
     {
         fingerPositions.Clear();
         lineRenderer.positionCount = 0;
+        cursor.gameObject.SetActive(false);
     }
 }
