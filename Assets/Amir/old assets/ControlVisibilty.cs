@@ -3,18 +3,22 @@ using Vuforia;
 
 public class ShowObjectsForLimitedTime : MonoBehaviour
 {
-    public GameObject object1; // Drag your first object here (shows for 5 seconds)
-    public GameObject object2; // Drag your second object here (shows for 1 minute)
-    
-    public float object1ShowTime = 5f;  // Time to show object1 (5 seconds)
-    public float object2ShowTime = 60f; // Time to show object2 (1 minute)
+    public GameObject object1; // First object (e.g., 5 seconds)
+    public GameObject object2; // Second object (e.g., 1 minute)
+    public GameObject object3; // Third object (e.g., 30 seconds)
+
+    public float object1ShowTime = 5f;   // Time to show object1 (in seconds)
+    public float object2ShowTime = 60f;  // Time to show object2 (in seconds)
+    public float object3ShowTime = 30f;  // Time to show object3 (in seconds)
 
     private bool isTimerRunning1 = false;
     private bool isTimerRunning2 = false;
+    private bool isTimerRunning3 = false;
+
     private float timer1 = 0f;
     private float timer2 = 0f;
+    private float timer3 = 0f;
 
-    // This will handle Vuforia's tracking events
     private void OnEnable()
     {
         var observer = GetComponent<ObserverBehaviour>();
@@ -35,13 +39,11 @@ public class ShowObjectsForLimitedTime : MonoBehaviour
 
     private void Start()
     {
-        // Ensure the objects are invisible at the start of the game
-        HideObjects();
+        HideObjects(); // Ensure all objects are invisible at the start
     }
 
     private void OnTargetStatusChanged(ObserverBehaviour behaviour, TargetStatus targetStatus)
     {
-        // When the target is tracked, show objects if the timers aren't running
         if (targetStatus.Status == Status.TRACKED)
         {
             if (!isTimerRunning1)
@@ -54,27 +56,75 @@ public class ShowObjectsForLimitedTime : MonoBehaviour
                 ShowObject2();
                 StartTimer2();
             }
+            if (!isTimerRunning3)
+            {
+                ShowObject3();
+                StartTimer3();
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (isTimerRunning1)
+        {
+            timer1 -= Time.deltaTime;
+            if (timer1 <= 0)
+            {
+                HideObject1();
+                isTimerRunning1 = false;
+            }
+        }
+
+        if (isTimerRunning2)
+        {
+            timer2 -= Time.deltaTime;
+            if (timer2 <= 0)
+            {
+                HideObject2();
+                isTimerRunning2 = false;
+            }
+        }
+
+        if (isTimerRunning3)
+        {
+            timer3 -= Time.deltaTime;
+            if (timer3 <= 0)
+            {
+                HideObject3();
+                isTimerRunning3 = false;
+            }
         }
     }
 
     private void ShowObject1()
     {
-        object1.SetActive(true); // Make object1 visible
+        object1.SetActive(true);
     }
 
     private void ShowObject2()
     {
-        object2.SetActive(true); // Make object2 visible
+        object2.SetActive(true);
+    }
+
+    private void ShowObject3()
+    {
+        object3.SetActive(true);
     }
 
     private void HideObject1()
     {
-        object1.SetActive(false); // Hide object1
+        object1.SetActive(false);
     }
 
     private void HideObject2()
     {
-        object2.SetActive(false); // Hide object2
+        object2.SetActive(false);
+    }
+
+    private void HideObject3()
+    {
+        object3.SetActive(false);
     }
 
     private void StartTimer1()
@@ -89,34 +139,16 @@ public class ShowObjectsForLimitedTime : MonoBehaviour
         timer2 = object2ShowTime;
     }
 
-    private void Update()
+    private void StartTimer3()
     {
-        // Timer for object1 (5 seconds)
-        if (isTimerRunning1)
-        {
-            timer1 -= Time.deltaTime;
-            if (timer1 <= 0)
-            {
-                HideObject1();
-                isTimerRunning1 = false;
-            }
-        }
-
-        // Timer for object2 (1 minute)
-        if (isTimerRunning2)
-        {
-            timer2 -= Time.deltaTime;
-            if (timer2 <= 0)
-            {
-                HideObject2();
-                isTimerRunning2 = false;
-            }
-        }
+        isTimerRunning3 = true;
+        timer3 = object3ShowTime;
     }
 
     private void HideObjects()
     {
-        object1.SetActive(false); // Hide object1 at the start
-        object2.SetActive(false); // Hide object2 at the start
+        object1.SetActive(false);
+        object2.SetActive(false);
+        object3.SetActive(false);
     }
 }

@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Amir/Hallway.unity
     guid: 958d4f8f0aee747b38db556f71584897
-  - enabled: 1
+  - enabled: 0
     path: Assets/Amir/hallway office.unity
     guid: a22229d462ac747cf82e50250f5011ea
+  - enabled: 1
+    path: Assets/Amir/hallway updated.unity
+    guid: f098a594128d845d980c47172281fcad
   m_configObjects: {}
