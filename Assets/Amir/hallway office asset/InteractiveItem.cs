@@ -4,12 +4,7 @@ public class InteractiveItem : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        Debug.Log("Interactive item touched!");  // Confirm interaction
-
-        // Trigger the PitManager to activate the plane finder
-        PitManager.Instance.ActivatePlaneFinder();
-        
-        // Hide the interactive item
-        gameObject.SetActive(false); 
+        Debug.Log("Interactive item touched. Activating plane finder.");
+        PitManager.Instance.ActivatePlaneFinder();  // Activate the Plane Finder from PitManager
     }
 }

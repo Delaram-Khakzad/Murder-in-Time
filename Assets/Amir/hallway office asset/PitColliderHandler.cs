@@ -4,15 +4,22 @@ public class PitColliderHandler : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.CompareTag("PitCollider"))
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Player hit the pit! Restarting...");
-            PitManager.Instance.ResetPit(); // Reset the pit if the player touches it
-        }
-        else if (gameObject.CompareTag("EndZone"))
-        {
-            Debug.Log("Player successfully passed the pit!");
-            PitManager.Instance.OnPitSuccessfullyPassed(); // Mark as success
+            Debug.Log($"Player collided with: {gameObject.name}");
+
+            if (gameObject.CompareTag("Object3"))
+            {
+                PitManager.Instance.OnObjectCollision(gameObject);  
+            }
+            else if (gameObject.CompareTag("Object4"))
+            {
+                PitManager.Instance.OnObjectCollision(gameObject);  
+            }
+            else if (gameObject.CompareTag("EndZone"))
+            {
+                PitManager.Instance.OnReachEndZone();  
+            }
         }
     }
 }

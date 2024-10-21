@@ -7,8 +7,8 @@ public class PlaneFinderHandler : MonoBehaviour
     {
         if (result != null)
         {
-            Debug.Log("Surface detected. Placing PitQuad.");
-            PitManager.Instance.PlacePitAtSurface(result);  // Place the PitQuad
+            Debug.Log("Surface detected. Passing result to PitManager.");
+            PitManager.Instance.OnInteractiveHitTest(result);  // Call the method in PitManager
         }
         else
         {
