@@ -10,18 +10,18 @@ using Image = UnityEngine.UI.Image;
 public class Pathtracing : MonoBehaviour
 {
     public Transform[] checkpoints; // Assign checkpoints in sequence in the Inspector
-    public GameObject[] touchpoints;
+    public GameObject[] touchpoints;  
     private int currentCheckpoint = 0;
-    private Image imageComponent;
+    private Image imageComponent;    
     public Sprite clickedTouchPoint; // Assign the sprite for a clicked touchpoint in the Inspector
     public Sprite unclickedTouchPoint; // Assign the sprite for an unclicked touchpoint in the Inspector
-    public LineRenderer lineRenderer;
-    public GameObject failReset;
+    public LineRenderer lineRenderer;  
+    public GameObject failReset;    //For user to redo the glyph after they fail
     public AudioSource audioSource;  // Reference to the AudioSource component
     public AudioClip checkSound;     // Sound to play when the user clicks the screen or button
     public AudioClip solvedSound;    // Sound to play when the user solves the puzzle
     public AudioClip failSound;      // Sound to play when the user fails the puzzle
-    public GameObject Glyph;
+    public GameObject Glyph;         
     public GameObject Canvas;
     public GameObject successText;
     public GameObject MidAirIndicator;
