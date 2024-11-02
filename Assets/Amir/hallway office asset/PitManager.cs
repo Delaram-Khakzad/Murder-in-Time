@@ -26,7 +26,10 @@ public class PitManager : MonoBehaviour
 
     private void ResetObjects()
     {
-        pitQuad.SetActive(false);
+        // Ensure pitQuad is active from the start
+        pitQuad.SetActive(true);
+
+        // Deactivate other objects for initial setup
         object3.SetActive(false);
         object4.SetActive(false);
         finalObject1.SetActive(false);
@@ -40,7 +43,7 @@ public class PitManager : MonoBehaviour
     // Activate Plane Finder
     public void ActivatePlaneFinder()
     {
-        if (placementStage >= 3) return; 
+        if (placementStage >= 2) return; 
 
         planeFinder.enabled = true;
         Debug.Log($"Activating Plane Finder for placement stage {placementStage + 1}.");
@@ -49,7 +52,7 @@ public class PitManager : MonoBehaviour
     // Handle interactive hit test
     public void OnInteractiveHitTest(HitTestResult result)
     {
-        if (result == null || placementStage >= 3) return;
+        if (result == null || placementStage >= 2) return;
 
         Vector3 position = result.Position;
         Debug.Log($"Placing object at stage {placementStage}.");
@@ -57,16 +60,10 @@ public class PitManager : MonoBehaviour
         switch (placementStage)
         {
             case 0:
-                pitQuad.transform.position = position;
-                pitQuad.SetActive(true);
-                Debug.Log("Placed PitQuad.");
-                break;
-
-            case 1:
                 SetupObject(object3, position, "Object3");
                 break;
 
-            case 2:
+            case 1:
                 SetupObject(object4, position, "Object4");
                 break;
         }

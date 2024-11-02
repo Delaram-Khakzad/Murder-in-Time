@@ -18,6 +18,8 @@ TagManager:
   - Object4
   - Object3Trigger
   - Object4Trigger
+  - greenmaze
+  - redmaze
   layers:
   - Default
   - TransparentFX
