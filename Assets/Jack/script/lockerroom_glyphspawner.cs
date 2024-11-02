@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using Vuforia;
 public class LockerRoomGlyphSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject glyphCheckPoint; // UI panel prefab (inactive at start)
+    [SerializeField] private GameObject glyphCheckPoint; // UI panel anchorOBJ (inactive at start)
     public Camera arCamera; // Assign the AR camera here
     private HitTestResult previousHit;
     private List<Vector3> clickPositions = new List<Vector3>();

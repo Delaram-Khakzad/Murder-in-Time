@@ -33,7 +33,7 @@ public class GlyphOnClickedPlane : MonoBehaviour
         Debug.LogWarning("createplane");
         if (previousHit != null)
         {
-            // Instantiate the 2D Canvas prefab at the hit point
+            // Instantiate the 2D Canvas anchorOBJ at the hit point
             //Vector3 hitPosition = previousHit.Position;
 
             // Set the Canvas position to the hit point
