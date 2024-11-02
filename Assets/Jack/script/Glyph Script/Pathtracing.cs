@@ -9,28 +9,29 @@ using Image = UnityEngine.UI.Image;
 
 public class Pathtracing : MonoBehaviour
 {
-    public Transform[] checkpoints; // 在 Inspector 中按顺序分配检查点
+    public Transform[] checkpoints; // Assign checkpoints in sequence in the Inspector
     public GameObject[] touchpoints;
     private int currentCheckpoint = 0;
     private Image imageComponent;
-    public Sprite clickedTouchPoint; // 在 Inspector 中分配已点击的 Sprite
-    public Sprite unclickedTouchPoint; // 在 Inspector 中分配未点击的 Sprite
+    public Sprite clickedTouchPoint; // Assign the sprite for a clicked touchpoint in the Inspector
+    public Sprite unclickedTouchPoint; // Assign the sprite for an unclicked touchpoint in the Inspector
     public LineRenderer lineRenderer;
     public GameObject failReset;
-    public AudioSource audioSource;  // 引用 AudioSource 组件
-    public AudioClip checkSound;       // 用户点击屏幕或按钮时播放的音效
-    public AudioClip solvedSound;      // 用户完成谜题时播放的音效
-    public AudioClip failSound;      // 用户完成谜题时播放的音效
+    public AudioSource audioSource;  // Reference to the AudioSource component
+    public AudioClip checkSound;     // Sound to play when the user clicks the screen or button
+    public AudioClip solvedSound;    // Sound to play when the user solves the puzzle
+    public AudioClip failSound;      // Sound to play when the user fails the puzzle
     public GameObject Glyph;
     public GameObject Canvas;
     public GameObject successText;
+    public GameObject MidAirIndicator;
     private bool Solved = false;
     private bool failed = false;
-    public Camera arCamera; // 引用您的 AR 相机
+    public Camera arCamera; // Reference to the AR camera
 
     private void Start()
     {
-
+        // Initialization code if needed
     }
 
     void Update()
@@ -44,18 +45,18 @@ public class Pathtracing : MonoBehaviour
             Fail();
             Glyph.SetActive(false);
             failReset.SetActive(true);
-            failed= false;
+            failed = false;
         }
         Vector2 touchPosition;
 
-        // 检查移动设备的触摸输入
+        // Check for touch input on a mobile device
         if (Input.touchCount > 0)
         {
             Debug.Log("touch");
             Touch touch = Input.GetTouch(0);
             touchPosition = touch.position;
         }
-        // 或检查鼠标输入（用于桌面测试）
+        // Or check for mouse input (useful for desktop testing)
         else if (Input.GetMouseButton(0))
         {
             Debug.Log("click");
@@ -64,63 +65,58 @@ public class Pathtracing : MonoBehaviour
         else
         {
             Debug.Log("invalid");
-            return; // 如果没有有效输入，退出 Update
+            return; // Exit Update if no valid input is detected
         }
 
-        // 将屏幕坐标转换为射线
+        // Convert screen coordinates to a ray
         Ray ray = arCamera.ScreenPointToRay(touchPosition);
 
-        // 执行射线检测，获取所有命中的碰撞体
+        // Perform raycast to get all colliders hit by the ray
         RaycastHit[] hits = Physics.RaycastAll(ray);
 
         bool checkpointHit = false;
 
         foreach (RaycastHit hit in hits)
         {
-            // 检查命中的碰撞体是否具有 "Checkpoint" 标签
+            // Check if the hit collider has the "Checkpoint" tag
             if (hit.collider.CompareTag("Checkpoint"))
             {
-                for(int i=currentCheckpoint+1;i<checkpoints.Length;i++)
+                for (int i = currentCheckpoint + 1; i < checkpoints.Length; i++)
                 {
-                    if(hit.collider.transform == checkpoints[i])
+                    if (hit.collider.transform == checkpoints[i])
                     {
                         failed = true;
                         return;
                     }
                 }
-                // 检查命中的碰撞体是否为当前的检查点
+                // Check if the hit collider is the current checkpoint
                 if (hit.collider.transform == checkpoints[currentCheckpoint])
                 {
                     checkpointHit = true;
                     Debug.Log($"Checkpoint {currentCheckpoint + 1} reached!");
                     imageComponent = touchpoints[currentCheckpoint].GetComponent<Image>();
                     imageComponent.sprite = clickedTouchPoint;
-                    currentCheckpoint++; // 移动到下一个检查点
+                    currentCheckpoint++; // Move to the next checkpoint
 
                     if (audioSource != null && checkSound != null)
                     {
-                        audioSource.PlayOneShot(checkSound);  // 播放点击音效
+                        audioSource.PlayOneShot(checkSound);  // Play click sound
                     }
 
                     if (currentCheckpoint >= checkpoints.Length)
                     {
-                        Debug.Log("Puzzle Solved!");
-                        Glyph.SetActive(false);
-                        successText.SetActive(true);
-                        Solved = true;
-                        Canvas.SetActive(false);
+                        succeed();
                         if (audioSource != null && solvedSound != null)
                         {
-                            audioSource.PlayOneShot(solvedSound);  // 播放完成音效
+                            audioSource.PlayOneShot(solvedSound);  // Play puzzle solved sound
                         }
                         lineRenderer.GetComponent<FingerTrace>().stopdrawing();
-                        // 在此触发谜题完成的逻辑
-                        // ResetCheckpoints(); // 可选择在完成后重置
+                        // Trigger puzzle completion logic here
+                        // ResetCheckpoints(); // Optionally reset after completion
                     }
 
-                    break; // 找到目标检查点后退出循环
+                    break; // Exit loop after finding the target checkpoint
                 }
-
             }
         }
 
@@ -129,20 +125,32 @@ public class Pathtracing : MonoBehaviour
             Debug.Log("No checkpoint hit by Raycast.");
         }
     }
-    private void Fail()
+
+    //if user solves the glyph
+    private void succeed()
     {
-        ResetCheckpoints();
-        audioSource.PlayOneShot(failSound);  // 播放点击音效
+        Debug.Log("Puzzle Solved!");
+        Glyph.SetActive(false); 
+        successText.SetActive(true); //notification about success
+        Solved = true;
+        Canvas.SetActive(false);
+        MidAirIndicator.SetActive(false);
     }
-    public void startAgain()
+    private void Fail() //What will happen after the user fails on solving
+    {
+        ResetCheckpoints(); //reset the glyph
+        audioSource.PlayOneShot(failSound);  // Play fail sound
+    }
+    public void startAgain() //After failure, user can click the failReset button to solve again.
     {
         Glyph.SetActive(true);
-        failReset.SetActive(false );
+        failReset.SetActive(false);
         audioSource.Stop();
     }
+    //reset the glyph
     private void ResetCheckpoints()
     {
-        currentCheckpoint = 0; // 重置检查点计数器
+        currentCheckpoint = 0; // Reset checkpoint counter
         lineRenderer.positionCount = 0;
         for (int i = 0; i < touchpoints.Length; i++)
         {
@@ -151,5 +159,4 @@ public class Pathtracing : MonoBehaviour
         lineRenderer.positionCount = 0;
         Solved = false;
     }
-
 }

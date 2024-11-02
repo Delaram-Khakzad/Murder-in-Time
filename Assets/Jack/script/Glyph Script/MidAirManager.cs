@@ -19,15 +19,20 @@ public class MidAirManager : MonoBehaviour
     {
         
     }
-    public void AnchorCreator(Transform worldPosistioning) { 
-        if(anchorExists)
+    public void AnchorCreator(Transform worldPositioning) {
+        if (anchorExists)
         {
             return;
         }
         anchorOBJ.SetActive(true);
         anchorExists = true;
-        anchorOBJ.transform.position=new Vector3(worldPosistioning.position.x, worldPosistioning.position.y, worldPosistioning.position.z+1);
-        anchorOBJ.transform.rotation=Quaternion.Euler(0,0,0);
+
+        // set position in front of AR camera
+        anchorOBJ.transform.position = worldPositioning.position + worldPositioning.forward;
+
+        // rotation with AR camera
+        anchorOBJ.transform.rotation = worldPositioning.rotation;
+
         Debug.Log(anchorOBJ.transform.rotation);
     }
 }

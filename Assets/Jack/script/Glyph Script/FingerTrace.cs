@@ -10,16 +10,16 @@ public class FingerTrace : MonoBehaviour
     private List<Vector3> fingerPositions;
     private bool stop = false;
     public Camera arCamera;
-    public Canvas worldCanvas; // 分配你的 World Space Canvas
-    public GameObject cursor; // 分配你的光标对象
+    public Canvas worldCanvas; // Assign your World Space Canvas here
+    public GameObject cursor; // Assign your cursor object here
 
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         fingerPositions = new List<Vector3>();
-        lineRenderer.positionCount = 0; // 初始没有点
+        lineRenderer.positionCount = 0; // Initially, there are no points
 
-        cursor.SetActive(false); // 初始隐藏光标
+        cursor.SetActive(false); // Hide the cursor initially
     }
 
     public void stopdrawing()
@@ -36,39 +36,39 @@ public class FingerTrace : MonoBehaviour
 
         Vector2 touchPosition;
 
-        // 检查移动设备的触摸输入
+        // Check for touch input on a mobile device
         if (Input.touchCount > 0)
         {
             Debug.Log("touch");
             Touch touch = Input.GetTouch(0);
             touchPosition = touch.position;
-            cursor.SetActive(true); // 当触摸开始时显示光标
+            cursor.SetActive(true); // Show cursor when touch starts
         }
-        // 检查鼠标输入（用于桌面测试）
+        // Check for mouse input (useful for desktop testing)
         else if (Input.GetMouseButton(0))
         {
             Debug.Log("click");
             touchPosition = Input.mousePosition;
-            cursor.SetActive(true); // 当点击开始时显示光标
+            cursor.SetActive(true); // Show cursor when click starts
         }
         else
         {
             Debug.Log("invalid");
-            cursor.SetActive(false); // 隐藏光标
-            return; // 如果没有有效输入，退出 Update
+            cursor.SetActive(false); // Hide the cursor
+            return; // Exit Update if no valid input is detected
         }
 
-        // 从屏幕点创建一条射线
+        // Create a ray from the screen point
         Ray ray = arCamera.ScreenPointToRay(touchPosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            // 检查射线是否击中了 Canvas 或其子对象
+            // Check if the ray hit the Canvas or its child objects
             if (hit.collider.gameObject == worldCanvas.gameObject || hit.collider.transform.IsChildOf(worldCanvas.transform))
             {
                 Vector3 intersectionPoint = hit.point;
                 cursor.transform.position = intersectionPoint;
-                // 如果距离上一个点足够远，则添加新点
+                // Add a new point if it's far enough from the last point
                 if (fingerPositions.Count == 0 || Vector3.Distance(fingerPositions[fingerPositions.Count - 1], intersectionPoint) > 0.1f)
                 {
                     fingerPositions.Add(intersectionPoint);
@@ -76,7 +76,7 @@ public class FingerTrace : MonoBehaviour
                     lineRenderer.SetPosition(fingerPositions.Count - 1, intersectionPoint);
                 }
 
-                // 可选：当用户抬起手指或鼠标按钮时清除线条
+                // Optional: Clear the line when the user releases the touch or mouse button
                 if (Input.GetMouseButtonUp(0))
                 {
                     Debug.Log("clear");

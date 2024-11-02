@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonScaler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class ObjectScaler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public GameObject targetObject;   // 需要变大的对象
-    public float scaleSpeed = 1f;     // 缩放速度
-    private bool isPressing = false;  // 标记按钮是否被按下
-    private Vector3 originalScale;    // 保存对象的初始尺寸
+    public GameObject targetObject;   // The object to scale up
+    public float scaleSpeed = 1f;     // Speed of scaling
+    private bool isPressing = false;  // Flag to indicate if the button is being pressed
+    private Vector3 originalScale;    // Store the initial scale of the object
 
     void Start()
     {
         if (targetObject != null)
         {
-            // 保存对象的初始尺寸
+            // Save the initial scale of the object
             originalScale = targetObject.transform.localScale;
         }
         else
         {
-            Debug.LogError("未分配 targetObject。");
+            Debug.LogError("targetObject not assigned.");
         }
     }
 
@@ -27,18 +27,18 @@ public class ButtonScaler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (isPressing && targetObject != null)
         {
-            // 增加对象的缩放比例
+            // Increase the scale of the object
             targetObject.transform.localScale += Vector3.one * scaleSpeed * Time.deltaTime;
         }
     }
 
-    // 按钮按下时调用
+    // Called when the button is pressed down
     public void OnPointerDown(PointerEventData eventData)
     {
         isPressing = true;
     }
 
-    // 按钮松开时调用
+    // Called when the button is released
     public void OnPointerUp(PointerEventData eventData)
     {
         isPressing = false;
