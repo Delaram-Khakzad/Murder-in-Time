@@ -7,11 +7,12 @@ public class PitManager : MonoBehaviour
 
     public GameObject pitQuad;  
     public PlaneFinderBehaviour planeFinder;
-    public GameObject interactiveItem;
     public GameObject finalObject1;
     public GameObject finalObject2;
     public GameObject object3;  
     public GameObject object4;
+    public GameObject externalObject1;
+    public GameObject externalObject2;
     public AudioSource successSound;
 
     private int placementStage = 0;
@@ -34,6 +35,10 @@ public class PitManager : MonoBehaviour
         object4.SetActive(false);
         finalObject1.SetActive(false);
         finalObject2.SetActive(false);
+
+        // Ensure external objects are active and visible from the beginning
+        externalObject1.SetActive(true);
+        externalObject2.SetActive(true);
 
         object3Collided = false;
         object4Collided = false;
@@ -61,10 +66,14 @@ public class PitManager : MonoBehaviour
         {
             case 0:
                 SetupObject(object3, position, "Object3");
+                externalObject1.SetActive(false); // Deactivate externalObject1 when object3 is placed
+                Debug.Log("Deactivated externalObject1.");
                 break;
 
             case 1:
                 SetupObject(object4, position, "Object4");
+                externalObject2.SetActive(false); // Deactivate externalObject2 when object4 is placed
+                Debug.Log("Deactivated externalObject2.");
                 break;
         }
 
@@ -126,9 +135,7 @@ public class PitManager : MonoBehaviour
     {
         if (object3Collided && object4Collided)
         {
-            finalObject1.SetActive(true);
-            finalObject2.SetActive(true);
-
+            // Only play the success sound without activating final objects
             if (successSound != null)
             {
                 successSound.Play();  

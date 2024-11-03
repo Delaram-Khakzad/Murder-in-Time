@@ -1,30 +1,32 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;  // Required for IEnumerator
 
 public class BoundaryWarningScript : MonoBehaviour
 {
     public AudioSource audioSource;
+    private bool canPlaySound = false;
 
-    // This method is called when the trigger collides with another object
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        Debug.Log("Trigger Detected with: " + other.gameObject.name);
-
-        if (audioSource != null && !audioSource.isPlaying)
-        {
-            audioSource.Play();
-        }
-
-        // Vibrate the phone
-        VibratePhone();
+        // Activate sound only after a delay to avoid triggering at start
+        Invoke("EnableSound", 1f);  // Adjust delay as necessary
     }
 
-    // Method to vibrate the phone
-    private void VibratePhone()
+    private void EnableSound()
     {
-        #if UNITY_ANDROID || UNITY_IOS
-        Handheld.Vibrate();  // Vibrate the phone (only works on mobile devices)
-        #endif
+        canPlaySound = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the object colliding has the specific tag (e.g., "Player")
+        if (canPlaySound && other.CompareTag("Player"))
+        {
+            Debug.Log("Collision detected with: " + other.gameObject.name);
+
+            if (audioSource != null && !audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
     }
 }
