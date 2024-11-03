@@ -4,19 +4,19 @@ using Vuforia;
 public class ShowObjectsForLimitedTime : MonoBehaviour
 {
     public GameObject object1; // First object (e.g., 5 seconds)
-    public GameObject object2; // Second object (e.g., 1 minute)
     public GameObject object3; // Third object (e.g., 30 seconds)
+    public AudioSource audioSource; // Audio source to play after one minute
 
     public float object1ShowTime = 5f;   // Time to show object1 (in seconds)
-    public float object2ShowTime = 60f;  // Time to show object2 (in seconds)
+    public float object2AudioDelay = 60f; // Delay to play audio (in seconds)
     public float object3ShowTime = 30f;  // Time to show object3 (in seconds)
 
     private bool isTimerRunning1 = false;
-    private bool isTimerRunning2 = false;
+    private bool isAudioTimerRunning = false;
     private bool isTimerRunning3 = false;
 
     private float timer1 = 0f;
-    private float timer2 = 0f;
+    private float audioTimer = 0f;
     private float timer3 = 0f;
 
     private void OnEnable()
@@ -51,10 +51,9 @@ public class ShowObjectsForLimitedTime : MonoBehaviour
                 ShowObject1();
                 StartTimer1();
             }
-            if (!isTimerRunning2)
+            if (!isAudioTimerRunning)
             {
-                ShowObject2();
-                StartTimer2();
+                StartAudioTimer();
             }
             if (!isTimerRunning3)
             {
@@ -76,13 +75,13 @@ public class ShowObjectsForLimitedTime : MonoBehaviour
             }
         }
 
-        if (isTimerRunning2)
+        if (isAudioTimerRunning)
         {
-            timer2 -= Time.deltaTime;
-            if (timer2 <= 0)
+            audioTimer -= Time.deltaTime;
+            if (audioTimer <= 0)
             {
-                HideObject2();
-                isTimerRunning2 = false;
+                PlayAudio();
+                isAudioTimerRunning = false;
             }
         }
 
@@ -102,11 +101,6 @@ public class ShowObjectsForLimitedTime : MonoBehaviour
         object1.SetActive(true);
     }
 
-    private void ShowObject2()
-    {
-        object2.SetActive(true);
-    }
-
     private void ShowObject3()
     {
         object3.SetActive(true);
@@ -115,11 +109,6 @@ public class ShowObjectsForLimitedTime : MonoBehaviour
     private void HideObject1()
     {
         object1.SetActive(false);
-    }
-
-    private void HideObject2()
-    {
-        object2.SetActive(false);
     }
 
     private void HideObject3()
@@ -133,10 +122,10 @@ public class ShowObjectsForLimitedTime : MonoBehaviour
         timer1 = object1ShowTime;
     }
 
-    private void StartTimer2()
+    private void StartAudioTimer()
     {
-        isTimerRunning2 = true;
-        timer2 = object2ShowTime;
+        isAudioTimerRunning = true;
+        audioTimer = object2AudioDelay;
     }
 
     private void StartTimer3()
@@ -145,10 +134,17 @@ public class ShowObjectsForLimitedTime : MonoBehaviour
         timer3 = object3ShowTime;
     }
 
+    private void PlayAudio()
+    {
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+    }
+
     private void HideObjects()
     {
         object1.SetActive(false);
-        object2.SetActive(false);
         object3.SetActive(false);
     }
 }
