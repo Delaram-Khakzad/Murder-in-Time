@@ -1,0 +1,264 @@
+fileFormatVersion: 2
+guid: 2def0f411b38140e08596602a12db3e2
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ATM_shader
+    second: {fileID: 2100000, guid: 8c1a26f611402428fb65a0680859ec64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BenchA_shader
+    second: {fileID: 2100000, guid: 116ac30a5165042df92cb2e0298a6b6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ConcreteBench_shader
+    second: {fileID: 2100000, guid: a5811c638e072458f985cf9049a94ce9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Crate1_shader
+    second: {fileID: 2100000, guid: 5861c85b404254629895bca343972e5d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Crate2_shader
+    second: {fileID: 2100000, guid: 4a8e2af0753dd4d4fbc2612ae1af2905, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Crate3_shader
+    second: {fileID: 2100000, guid: bc5cec09adcf74a9b923045282de6a88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Crate4_shader
+    second: {fileID: 2100000, guid: 0273e6a63ebb84ba790d71c551647cfa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Crossing_shader
+    second: {fileID: 2100000, guid: 94c7ae3ff5d76476baced8d52b16cbb4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drain_shader
+    second: {fileID: 2100000, guid: ddb29f29e3d344645ba4d14dc1d3b0c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DumpsterLid_shader
+    second: {fileID: 2100000, guid: f816378b0af5342289e52aec07396cc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dumpster_shader
+    second: {fileID: 2100000, guid: 9e7818d830aa6457a8a2181975cf1d8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FireHydrant_shader
+    second: {fileID: 2100000, guid: 4f01f7ac3bacf45718fed86be4d58ae9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grate_shader
+    second: {fileID: 2100000, guid: a0803328aeed84d5fb49e732c91b849e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light_shader
+    second: {fileID: 2100000, guid: c3d065eab1cf8487bb913a359e56cf0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Manhole_shader
+    second: {fileID: 2100000, guid: 8230c806d0bf546908f80aaa73dc5dff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pallet_shader
+    second: {fileID: 2100000, guid: f56f6cf7d9dfd46919d52c41515d9616, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pallet_shader2
+    second: {fileID: 2100000, guid: f2588d390a5d740de8f128250944084b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ParkBenchLong_shader
+    second: {fileID: 2100000, guid: c40922e66c05a4806ba337a673665d88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ParkBenchShort_shader
+    second: {fileID: 2100000, guid: 637a0dcb757fc430bb600bf134e94d6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ParkingMeter_shader
+    second: {fileID: 2100000, guid: 4946d32781679439389bc7c500d6fc38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PostBarrier_shader
+    second: {fileID: 2100000, guid: cedbf86a6fbf24e68b00b629e013f59d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PostBox_shader
+    second: {fileID: 2100000, guid: 7778f61264a8d48cd901d34060633ce7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sign_shader
+    second: {fileID: 2100000, guid: a2671300f696843b39dbcbe9c6e5d47f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StornDrain_shader
+    second: {fileID: 2100000, guid: ddb29f29e3d344645ba4d14dc1d3b0c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Structure_shader
+    second: {fileID: 2100000, guid: 66b5fa5dfbfc74b7588de66a6acce717, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tarp_shader
+    second: {fileID: 2100000, guid: fdceea28418b24627bfeb46278896acc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrashCanCap_shader
+    second: {fileID: 2100000, guid: c85e15ec98c36489690bd0da4b458330, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrashCanLarge_shader
+    second: {fileID: 2100000, guid: d6850f00f1b1946d69aded9eed68a75b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrashCanSmall_shader
+    second: {fileID: 2100000, guid: 984e99ec9417d4d3582a4555f3b2bec5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrashCommercial_shader
+    second: {fileID: 2100000, guid: 9fc253c9376e341d29e8324a90bb901c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Utility_shader
+    second: {fileID: 2100000, guid: e55ab9302db104fb9a4df9c571855e45, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

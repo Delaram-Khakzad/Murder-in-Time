@@ -14,6 +14,7 @@ TagManager:
   - EndZone
   - S2toS4
   - S3toS4
+  - LensControlled
   layers:
   - Default
   - TransparentFX
