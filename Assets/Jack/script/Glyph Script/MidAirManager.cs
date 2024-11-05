@@ -20,10 +20,22 @@ public class MidAirManager : MonoBehaviour
         
     }
     public void AnchorCreator(Transform worldPositioning) {
+
         if (anchorExists)
         {
             return;
         }
+
+        // Ensure the AR camera with the tag "MainCamera" is assigned correctly
+        Camera arCamera = Camera.main;
+        if (arCamera == null)
+        {
+            Debug.LogError("MainCamera not found. Please ensure your AR camera is tagged as 'MainCamera'.");
+            return;
+        }
+
+        worldPositioning = arCamera.transform;
+
         anchorOBJ.SetActive(true);
         anchorExists = true;
 

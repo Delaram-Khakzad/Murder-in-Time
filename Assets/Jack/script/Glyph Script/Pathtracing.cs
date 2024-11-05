@@ -28,10 +28,18 @@ public class Pathtracing : MonoBehaviour
     private bool Solved = false;
     private bool failed = false;
     public Camera arCamera; // Reference to the AR camera
+    public Material newMaterial;
+    public Material oldMaterial;
 
     private void Start()
     {
         // Initialization code if needed
+        arCamera = Camera.main;
+        if (arCamera == null)
+        {
+            Debug.LogError("MainCamera not found. Please ensure your AR camera is tagged as 'MainCamera'.");
+            return;
+        }
     }
 
     void Update()
@@ -94,8 +102,13 @@ public class Pathtracing : MonoBehaviour
                 {
                     checkpointHit = true;
                     Debug.Log($"Checkpoint {currentCheckpoint + 1} reached!");
-                    imageComponent = touchpoints[currentCheckpoint].GetComponent<Image>();
-                    imageComponent.sprite = clickedTouchPoint;
+                    // imageComponent = touchpoints[currentCheckpoint].GetComponent<Image>();
+                    // imageComponent.sprite = clickedTouchPoint;
+                    Renderer renderer = touchpoints[currentCheckpoint].GetComponent<Renderer>();
+                    if (renderer != null)
+                    {
+                        renderer.material = newMaterial; // Assign a new material
+                    }
                     currentCheckpoint++; // Move to the next checkpoint
 
                     if (audioSource != null && checkSound != null)
@@ -139,6 +152,7 @@ public class Pathtracing : MonoBehaviour
     private void Fail() //What will happen after the user fails on solving
     {
         ResetCheckpoints(); //reset the glyph
+        MidAirIndicator.SetActive(false);
         audioSource.PlayOneShot(failSound);  // Play fail sound
     }
     public void startAgain() //After failure, user can click the failReset button to solve again.
@@ -154,7 +168,11 @@ public class Pathtracing : MonoBehaviour
         lineRenderer.positionCount = 0;
         for (int i = 0; i < touchpoints.Length; i++)
         {
-            touchpoints[i].GetComponent<Image>().sprite = unclickedTouchPoint;
+            Renderer renderer = touchpoints[i].GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material = oldMaterial; // Assign a new material
+        }
         }
         lineRenderer.positionCount = 0;
         Solved = false;

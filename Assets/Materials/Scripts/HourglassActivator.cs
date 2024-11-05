@@ -101,11 +101,13 @@ public class HourglassInteraction : MonoBehaviour
         transform.localScale = initialScale;
         transform.rotation = initialRotation;
 
-        // Display the canvas panel after the reset
-        if (canvasPanel != null)
-        {
-            canvasPanel.SetActive(true);
-        }
+        canvasPanel.SetActive(true);
+
+        // // Display the canvas panel after the reset
+        // if (canvasPanel != null)
+        // {
+        //     canvasPanel.SetActive(true);
+        // }
     }
 
     private void Vibrate()

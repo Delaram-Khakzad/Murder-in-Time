@@ -18,9 +18,15 @@ public class FingerTrace : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         fingerPositions = new List<Vector3>();
         lineRenderer.positionCount = 0; // Initially, there are no points
-
-        cursor.SetActive(false); // Hide the cursor initially
-    }
+        
+        arCamera = Camera.main;
+        if (arCamera == null)
+        {
+            Debug.LogError("MainCamera not found. Please ensure your AR camera is tagged as 'MainCamera'.");
+            return;
+        }
+            cursor.SetActive(false); // Hide the cursor initially
+        }
 
     public void stopdrawing()
     {
