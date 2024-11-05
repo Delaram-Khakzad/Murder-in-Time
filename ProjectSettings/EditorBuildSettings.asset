@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/Materials/Scenes/Scene2.unity
     guid: 91c4af824b9ae4290b0aaf8f596b6c36
   - enabled: 0
-    path: Assets/Amir/hallway updated.unity
+    path: Assets/Amir/Maze.unity
     guid: f098a594128d845d980c47172281fcad
   - enabled: 0
-    path: Assets/Amir/hallway office.unity
+    path: Assets/Amir/Pit.unity
     guid: a22229d462ac747cf82e50250f5011ea
   - enabled: 0
     path: Assets/Jack/Scene/Glyph Tracking maze.unity
