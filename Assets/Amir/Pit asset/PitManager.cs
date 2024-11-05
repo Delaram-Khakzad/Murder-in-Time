@@ -58,7 +58,24 @@ public class PitManager : MonoBehaviour
         object6Collided = false;
         placementStage = 0;
 
+        // Reset colors of all objects to default (e.g., white)
+        ResetColor(object3);
+        ResetColor(object4);
+        ResetColor(object5);
+        ResetColor(object6);
+
         Debug.Log("All objects reset.");
+    }
+
+    // Helper function to reset color to default
+    private void ResetColor(GameObject obj)
+    {
+        Renderer objRenderer = obj.GetComponent<Renderer>();
+        if (objRenderer != null)
+        {
+            objRenderer.material.color = Color.white;  // Set to the default color, white
+            Debug.Log($"{obj.name} color reset to default.");
+        }
     }
 
     // Activate Plane Finder
@@ -161,7 +178,7 @@ public class PitManager : MonoBehaviour
     // Play sound and reset on external object collision
     public void OnExternalObjectCollision()
     {
-        if (externalCollisionSound != null)
+        if (externalCollisionSound != null && !externalCollisionSound.isPlaying)
         {
             externalCollisionSound.Play();
         }

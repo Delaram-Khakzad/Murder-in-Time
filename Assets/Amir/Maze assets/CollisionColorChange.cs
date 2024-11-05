@@ -3,7 +3,8 @@ using System.Collections;
 
 public class CubeInteraction : MonoBehaviour
 {
-    public AudioSource cubeAudioSource; // Audio source specific to this cube
+    public AudioSource redAudioSource; // Audio source specific to "redmaze" cubes
+    public AudioSource greenAudioSource; // Audio source specific to "greenmaze" cubes
     public GreenMazeManager greenMazeManager; // Reference to the GreenMazeManager
     public Color redColor = Color.red; // Color for "redmaze" cubes
     public Color greenColor = Color.green; // Color for "greenmaze" cubes
@@ -12,21 +13,30 @@ public class CubeInteraction : MonoBehaviour
     public float resetDelay = 3.0f; // Delay before resetting color
     public float flashDuration = 5.0f; // Duration for flashing effect
     public float flashInterval = 0.5f; // Interval for flash effect
+    public float autoResetInterval = 60.0f; // Interval for automatic reset
 
     private bool isResetting = false; // Flag to prevent re-triggering during reset
     private bool hasCollided = false; // Flag to prevent multiple counts for one collision
 
     private void Start()
     {
-        if (cubeAudioSource == null)
+        if (redAudioSource == null)
         {
-            Debug.LogWarning("No AudioSource assigned to " + gameObject.name);
+            Debug.LogWarning("No AudioSource assigned for red cubes on " + gameObject.name);
+        }
+
+        if (greenAudioSource == null)
+        {
+            Debug.LogWarning("No AudioSource assigned for green cubes on " + gameObject.name);
         }
 
         if (greenMazeManager == null)
         {
             Debug.LogError("GreenMazeManager is not assigned in " + gameObject.name);
         }
+
+        // Start automatic reset coroutine
+        StartCoroutine(AutoResetCoroutine());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,10 +55,10 @@ public class CubeInteraction : MonoBehaviour
         {
             ChangeCubeColor(redColor);
 
-            // Play audio for "redmaze" if assigned and not already playing
-            if (cubeAudioSource != null && !cubeAudioSource.isPlaying)
+            // Play audio specific to "redmaze" if assigned
+            if (redAudioSource != null && !redAudioSource.isPlaying)
             {
-                cubeAudioSource.Play();
+                redAudioSource.Play();
             }
 
             // Start flashing and reset coroutine for all tagged cubes
@@ -59,6 +69,12 @@ public class CubeInteraction : MonoBehaviour
             // Change color to green, mark as collided, and notify the manager
             ChangeCubeColor(greenColor);
             hasCollided = true; // Prevent further collision counts
+
+            // Play sound specific to "greenmaze" cubes
+            if (greenAudioSource != null && !greenAudioSource.isPlaying)
+            {
+                greenAudioSource.Play();
+            }
 
             if (greenMazeManager != null)
             {
@@ -132,6 +148,16 @@ public class CubeInteraction : MonoBehaviour
         }
 
         isResetting = false;
+    }
+
+    // Coroutine for automatic reset every 60 seconds
+    private IEnumerator AutoResetCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(autoResetInterval);
+            StartCoroutine(FlashAndResetAllCubes());
+        }
     }
 
     // Helper function to append game objects to an array
