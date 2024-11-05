@@ -1,29 +1,48 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class LensToggle : MonoBehaviour
 
 {
-    public ProjectorController projectorController;
     public Button lensToggleButton;     // The UI button for toggling the lens
     public Image lensIcon;              // The UI image component for the lens icon
     public Sprite coloredLensIcon;      // The colored version of the lens icon
     public Sprite bwLensIcon;           // The black and white version of the lens icon
     public GameObject backgroundImage;  // The background image shown when the lens is on
-    public AudioClip clickSound;        // Drag and drop the audio file here in the Inspector
-    private AudioSource audioSource;
+    public AudioSource clickSound;
     public bool isLensActive = true;
     private readonly List<GameObject> lensControlledObjects = new();
 
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
         lensIcon.sprite = coloredLensIcon;
         backgroundImage.SetActive(true);
         lensToggleButton.onClick.AddListener(ToggleLens);
 
-        // Store all LensControlled objects in the list
+        // Populate LensControlled objects initially
+        PopulateLensControlledObjects();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to scene change event
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe to avoid memory leaks
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PopulateLensControlledObjects(); // Refresh lensControlledObjects on new scene load
+    }
+
+    private void PopulateLensControlledObjects()
+    {
+        lensControlledObjects.Clear(); // Clear the list before repopulating
         GameObject[] foundObjects = GameObject.FindGameObjectsWithTag("LensControlled");
         foreach (GameObject obj in foundObjects)
         {
@@ -33,9 +52,7 @@ public class LensToggle : MonoBehaviour
 
     public void PlayClickSound()
     {
-        // Assign the AudioClip to the AudioSource and play it
-        audioSource.clip = clickSound;
-        audioSource.Play();
+        clickSound.Play();
     }
 
     private void ToggleVisibility()

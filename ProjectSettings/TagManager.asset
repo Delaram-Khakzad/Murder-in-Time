@@ -15,6 +15,13 @@ TagManager:
   - S2toS4
   - S3toS4
   - LensControlled
+  - greenmaze
+  - redmaze
+  - Object4
+  - Object3
+  - ExternalObject
+  - Object5
+  - Object6
   layers:
   - Default
   - TransparentFX
