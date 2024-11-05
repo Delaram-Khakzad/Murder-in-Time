@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 13254260}
   - component: {fileID: 13254259}
   - component: {fileID: 13254263}
+  - component: {fileID: 13254264}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: greenmaze
@@ -255,6 +256,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &13254264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13254258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &73489317
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +417,7 @@ GameObject:
   - component: {fileID: 101754596}
   - component: {fileID: 101754595}
   - component: {fileID: 101754599}
+  - component: {fileID: 101754600}
   m_Layer: 0
   m_Name: Cube (14)
   m_TagString: redmaze
@@ -515,6 +538,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &101754600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101754594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &175083376 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 784232917963875663, guid: 77bdc55c474a147f0b3b8c9c5189bbe8, type: 3}
@@ -537,6 +581,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4533c93ec1de4e048c7b06bc409862b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &274919961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 274919963}
+  - component: {fileID: 274919962}
+  m_Layer: 0
+  m_Name: Greenmazemanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &274919962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274919961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a794b55c323004aaf976c604d5b9f1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victoryAudioSource: {fileID: 1569830767}
+  externalObject: {fileID: 1821703039}
+  greenGoal: 7
+--- !u!4 &274919963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274919961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.9830046, y: 0.20804152, z: 24.860237}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &294634186
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +641,7 @@ GameObject:
   - component: {fileID: 294634188}
   - component: {fileID: 294634187}
   - component: {fileID: 294634191}
+  - component: {fileID: 294634192}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: redmaze
@@ -670,6 +762,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &294634192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294634186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &294677883
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +1013,7 @@ GameObject:
   - component: {fileID: 304828893}
   - component: {fileID: 304828892}
   - component: {fileID: 304828896}
+  - component: {fileID: 304828897}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: redmaze
@@ -1020,6 +1134,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &304828897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304828891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &369625002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,6 +1251,7 @@ GameObject:
   - component: {fileID: 426559784}
   - component: {fileID: 426559783}
   - component: {fileID: 426559787}
+  - component: {fileID: 426559788}
   m_Layer: 0
   m_Name: Cube (11)
   m_TagString: redmaze
@@ -1236,6 +1372,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &426559788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426559782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &460394959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,6 +1648,7 @@ GameObject:
   - component: {fileID: 539057238}
   - component: {fileID: 539057237}
   - component: {fileID: 539057241}
+  - component: {fileID: 539057242}
   m_Layer: 0
   m_Name: Cube
   m_TagString: greenmaze
@@ -1611,6 +1769,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &539057242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539057236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &562384703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,6 +1803,7 @@ GameObject:
   - component: {fileID: 562384705}
   - component: {fileID: 562384704}
   - component: {fileID: 562384708}
+  - component: {fileID: 562384709}
   m_Layer: 0
   m_Name: Cube (9)
   m_TagString: greenmaze
@@ -1744,6 +1924,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &562384709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562384703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &571899635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,108 +2020,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &599291136
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 599291139}
-  - component: {fileID: 599291138}
-  - component: {fileID: 599291137}
-  - component: {fileID: 599291140}
-  m_Layer: 0
-  m_Name: mazemanager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &599291137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599291136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 1890722564}
-  externalObjectAudioSource: {fileID: 1569830767}
-  redColor: {r: 1, g: 0, b: 0, a: 1}
-  greenColor: {r: 0, g: 1, b: 0, a: 1}
-  resetColor: {r: 1, g: 1, b: 1, a: 1}
-  resetDelay: 3
-  externalObject: {fileID: 0}
-  flashInterval: 0.5
---- !u!65 &599291138
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599291136}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &599291139
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599291136}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9830046, y: 0.20804152, z: 24.860237}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &599291140
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599291136}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &601511622
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,6 +2240,63 @@ MonoBehaviour:
   mCastedBehaviour: {fileID: 604179118}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
+--- !u!114 &604179135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604179115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 604179118}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: img_5586
+  mDatasetName: Vuforia/Murder-in-Time.xml
+  mCastedBehaviour: {fileID: 604179118}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
+--- !u!114 &604179139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604179115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 604179118}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: img_5586
+  mDatasetName: Vuforia/Murder-in-Time.xml
+  mCastedBehaviour: {fileID: 604179118}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
+--- !u!114 &604179140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604179115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 604179118}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: img_5586
+  mDatasetName: Vuforia/Murder-in-Time.xml
+  mCastedBehaviour: {fileID: 604179118}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &642764916
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,6 +2310,7 @@ GameObject:
   - component: {fileID: 642764918}
   - component: {fileID: 642764917}
   - component: {fileID: 642764921}
+  - component: {fileID: 642764922}
   m_Layer: 0
   m_Name: Cube (12)
   m_TagString: greenmaze
@@ -2274,6 +2431,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &642764922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642764916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &692990156
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,6 +2465,7 @@ GameObject:
   - component: {fileID: 692990158}
   - component: {fileID: 692990157}
   - component: {fileID: 692990161}
+  - component: {fileID: 692990162}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: redmaze
@@ -2407,6 +2586,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &692990162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692990156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &704669443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3310,6 +3510,7 @@ GameObject:
   - component: {fileID: 1178087103}
   - component: {fileID: 1178087102}
   - component: {fileID: 1178087106}
+  - component: {fileID: 1178087107}
   m_Layer: 0
   m_Name: Cube (13)
   m_TagString: greenmaze
@@ -3430,6 +3631,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1178087107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178087101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &1180906005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3564,6 +3786,7 @@ GameObject:
   - component: {fileID: 1270388798}
   - component: {fileID: 1270388797}
   - component: {fileID: 1270388801}
+  - component: {fileID: 1270388802}
   m_Layer: 0
   m_Name: Cube (7)
   m_TagString: redmaze
@@ -3684,6 +3907,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1270388802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270388796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &1273258900
 GameObject:
   m_ObjectHideFlags: 0
@@ -4363,6 +4607,7 @@ GameObject:
   - component: {fileID: 1638072492}
   - component: {fileID: 1638072491}
   - component: {fileID: 1638072495}
+  - component: {fileID: 1638072496}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: redmaze
@@ -4483,6 +4728,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1638072496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638072490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &1659221109
 GameObject:
   m_ObjectHideFlags: 0
@@ -4735,6 +5001,7 @@ GameObject:
   - component: {fileID: 1851067430}
   - component: {fileID: 1851067429}
   - component: {fileID: 1851067433}
+  - component: {fileID: 1851067434}
   m_Layer: 0
   m_Name: Cube (15)
   m_TagString: redmaze
@@ -4855,6 +5122,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1851067434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851067428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1001 &1860566885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4996,6 +5284,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2088514129132339163, guid: 2aafa80994b4a414380cfc7db868265b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 604179131}
+    - targetCorrespondingSourceObject: {fileID: 2088514129132339163, guid: 2aafa80994b4a414380cfc7db868265b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 604179135}
+    - targetCorrespondingSourceObject: {fileID: 2088514129132339163, guid: 2aafa80994b4a414380cfc7db868265b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 604179139}
+    - targetCorrespondingSourceObject: {fileID: 2088514129132339163, guid: 2aafa80994b4a414380cfc7db868265b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 604179140}
   m_SourcePrefab: {fileID: 100100000, guid: 2aafa80994b4a414380cfc7db868265b, type: 3}
 --- !u!1 &1890722563
 GameObject:
@@ -5392,6 +5689,7 @@ GameObject:
   - component: {fileID: 2007450467}
   - component: {fileID: 2007450466}
   - component: {fileID: 2007450470}
+  - component: {fileID: 2007450471}
   m_Layer: 0
   m_Name: Cube (8)
   m_TagString: greenmaze
@@ -5512,6 +5810,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2007450471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007450465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &2039863441
 GameObject:
   m_ObjectHideFlags: 0
@@ -5525,6 +5844,7 @@ GameObject:
   - component: {fileID: 2039863443}
   - component: {fileID: 2039863442}
   - component: {fileID: 2039863446}
+  - component: {fileID: 2039863447}
   m_Layer: 0
   m_Name: Cube (10)
   m_TagString: greenmaze
@@ -5645,6 +5965,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2039863447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039863441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAudioSource: {fileID: 1890722564}
+  greenMazeManager: {fileID: 274919962}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  clear: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  resetDelay: 3
+  flashDuration: 5
+  flashInterval: 0.5
 --- !u!1 &2115515198
 GameObject:
   m_ObjectHideFlags: 0
@@ -5937,4 +6278,4 @@ SceneRoots:
   - {fileID: 1017978384}
   - {fileID: 2127415184}
   - {fileID: 750243216}
-  - {fileID: 599291139}
+  - {fileID: 274919963}

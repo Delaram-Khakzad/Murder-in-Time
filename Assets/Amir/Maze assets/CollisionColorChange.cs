@@ -1,94 +1,145 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlaySongOnCollisionupdated : MonoBehaviour
+public class CubeInteraction : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public AudioSource externalObjectAudioSource; 
-    public Color redColor = Color.red; 
-    public Color greenColor = Color.green; 
-    public Color resetColor = Color.white;
-    public float resetDelay = 3.0f; 
-    public GameObject externalObject; 
-    public float flashInterval = 0.5f;
+    public AudioSource cubeAudioSource; // Audio source specific to this cube
+    public GreenMazeManager greenMazeManager; // Reference to the GreenMazeManager
+    public Color redColor = Color.red; // Color for "redmaze" cubes
+    public Color greenColor = Color.green; // Color for "greenmaze" cubes
+    public Color clear = new Color(0, 0, 0, 0); // Fully transparent color
+    public Color flashColor = Color.red; // Flashing color (red)
+    public float resetDelay = 3.0f; // Delay before resetting color
+    public float flashDuration = 5.0f; // Duration for flashing effect
+    public float flashInterval = 0.5f; // Interval for flash effect
 
-    private int greenCount = 0;
-    private bool isResetting = false;
+    private bool isResetting = false; // Flag to prevent re-triggering during reset
+    private bool hasCollided = false; // Flag to prevent multiple counts for one collision
 
     private void Start()
     {
-        if (audioSource == null) Debug.LogWarning("No AudioSource assigned to " + gameObject.name);
-        if (externalObjectAudioSource == null) Debug.LogWarning("No AudioSource assigned for the external object sound.");
-        if (externalObject != null) externalObject.SetActive(false);
+        if (cubeAudioSource == null)
+        {
+            Debug.LogWarning("No AudioSource assigned to " + gameObject.name);
+        }
+
+        if (greenMazeManager == null)
+        {
+            Debug.LogError("GreenMazeManager is not assigned in " + gameObject.name);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Only proceed if the colliding object has the Player tag
-        if (isResetting || !other.CompareTag("Player")) return;
-
-        // Detect collision with redmaze and greenmaze tags
-        if (other.gameObject.CompareTag("redmaze"))
+        // Only proceed if the collider is tagged as "Player", victory hasn't been achieved, and no reset or previous collision has happened
+        if (other.CompareTag("Player") && !isResetting && !hasCollided && !greenMazeManager.victoryAchieved)
         {
-            Debug.Log("Player collided with 'redmaze' tagged object: " + other.gameObject.name);
-
-            if (audioSource != null && !audioSource.isPlaying) audioSource.Play();
-
-            Renderer objectRenderer = other.GetComponent<Renderer>();
-            if (objectRenderer != null) objectRenderer.material.color = redColor;
-
-            StartCoroutine(ResetAllMazeColorsWithDelay());
+            HandleCollision();
         }
-        else if (other.gameObject.CompareTag("greenmaze"))
+    }
+
+    private void HandleCollision()
+    {
+        // Check the tag of this cube and apply color and audio accordingly
+        if (CompareTag("redmaze"))
         {
-            Debug.Log("Player collided with 'greenmaze' tagged object: " + other.gameObject.name);
+            ChangeCubeColor(redColor);
 
-            Renderer objectRenderer = other.GetComponent<Renderer>();
-            if (objectRenderer != null && objectRenderer.material.color != greenColor)
+            // Play audio for "redmaze" if assigned and not already playing
+            if (cubeAudioSource != null && !cubeAudioSource.isPlaying)
             {
-                objectRenderer.material.color = greenColor;
-                greenCount++;
+                cubeAudioSource.Play();
+            }
 
-                if (greenCount == 7)
-                {
-                    if (externalObject != null) externalObject.SetActive(true);
-                    if (externalObjectAudioSource != null) externalObjectAudioSource.Play();
-                }
+            // Start flashing and reset coroutine for all tagged cubes
+            StartCoroutine(FlashAndResetAllCubes());
+        }
+        else if (CompareTag("greenmaze"))
+        {
+            // Change color to green, mark as collided, and notify the manager
+            ChangeCubeColor(greenColor);
+            hasCollided = true; // Prevent further collision counts
+
+            if (greenMazeManager != null)
+            {
+                greenMazeManager.IncrementGreenCounter();
             }
         }
     }
 
-    private IEnumerator ResetAllMazeColorsWithDelay()
+    // Change the color of this cube
+    private void ChangeCubeColor(Color color)
+    {
+        Renderer renderer = GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material.color = color;
+            Debug.Log("Color changed for " + gameObject.name + " to " + color);
+        }
+    }
+
+    // Coroutine to flash all cubes and reset color after a delay
+    private IEnumerator FlashAndResetAllCubes()
     {
         isResetting = true;
-        float elapsedTime = 0f;
+        GameObject[] allCubes = GameObject.FindGameObjectsWithTag("redmaze");
+        GameObject[] greenCubes = GameObject.FindGameObjectsWithTag("greenmaze");
 
-        while (elapsedTime < resetDelay)
+        foreach (GameObject cube in greenCubes)
         {
-            SetMazeObjectsColor(redColor);
-            yield return new WaitForSeconds(flashInterval);
-            SetMazeObjectsColor(resetColor);
-            yield return new WaitForSeconds(flashInterval);
-            elapsedTime += flashInterval * 2;
+            allCubes = Append(allCubes, cube);
         }
 
-        greenCount = 0;
-        SetMazeObjectsColor(resetColor);
+        // Flash all cubes with red color for the specified duration
+        float elapsed = 0f;
+        bool flashOn = true;
+        while (elapsed < flashDuration)
+        {
+            foreach (GameObject cube in allCubes)
+            {
+                Renderer renderer = cube.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    renderer.material.color = flashOn ? flashColor : clear;
+                }
+            }
+            flashOn = !flashOn;
+            elapsed += flashInterval;
+            yield return new WaitForSeconds(flashInterval);
+        }
+
+        // Reset all cubes to their original clear color after flashing
+        foreach (GameObject cube in allCubes)
+        {
+            Renderer renderer = cube.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material.color = clear;
+            }
+
+            // Reset hasCollided flag to allow re-collisions after reset, unless victory is achieved
+            CubeInteraction cubeInteraction = cube.GetComponent<CubeInteraction>();
+            if (cubeInteraction != null && !greenMazeManager.victoryAchieved)
+            {
+                cubeInteraction.hasCollided = false;
+            }
+        }
+
+        // Reset green counter if victory hasn't been achieved
+        if (!greenMazeManager.victoryAchieved)
+        {
+            greenMazeManager.ResetGreenCounter();
+        }
+
         isResetting = false;
     }
 
-    private void SetMazeObjectsColor(Color color)
+    // Helper function to append game objects to an array
+    private GameObject[] Append(GameObject[] array, GameObject item)
     {
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("redmaze"))
-        {
-            Renderer renderer = obj.GetComponent<Renderer>();
-            if (renderer != null) renderer.material.color = color;
-        }
-
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("greenmaze"))
-        {
-            Renderer renderer = obj.GetComponent<Renderer>();
-            if (renderer != null) renderer.material.color = color;
-        }
+        GameObject[] result = new GameObject[array.Length + 1];
+        array.CopyTo(result, 0);
+        result[result.Length - 1] = item;
+        return result;
     }
 }
