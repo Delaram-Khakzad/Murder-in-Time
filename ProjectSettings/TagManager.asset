@@ -21,6 +21,9 @@ TagManager:
   - greenmaze
   - redmaze
   - Child
+  - Object5
+  - Object6
+  - ExternalObject
   layers:
   - Default
   - TransparentFX
