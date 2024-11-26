@@ -1,26 +1,33 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CubeInteraction : MonoBehaviour
 {
-    public AudioSource cubeAudioSource; // Audio source specific to this cube
+    public AudioSource redAudioSource; // Audio source specific to "redmaze" cubes
+    public AudioSource greenAudioSource; // Audio source specific to "greenmaze" cubes
     public GreenMazeManager greenMazeManager; // Reference to the GreenMazeManager
     public Color redColor = Color.red; // Color for "redmaze" cubes
     public Color greenColor = Color.green; // Color for "greenmaze" cubes
     public Color clear = new Color(0, 0, 0, 0); // Fully transparent color
     public Color flashColor = Color.red; // Flashing color (red)
-    public float resetDelay = 3.0f; // Delay before resetting color
     public float flashDuration = 5.0f; // Duration for flashing effect
     public float flashInterval = 0.5f; // Interval for flash effect
+    public float autoResetInterval = 60.0f; // Interval for automatic reset
 
-    private bool isResetting = false; // Flag to prevent re-triggering during reset
+    private bool isFlashing = false; // Flag to indicate flashing is in progress
     private bool hasCollided = false; // Flag to prevent multiple counts for one collision
 
     private void Start()
     {
-        if (cubeAudioSource == null)
+        if (redAudioSource == null)
         {
-            Debug.LogWarning("No AudioSource assigned to " + gameObject.name);
+            Debug.LogWarning("No AudioSource assigned for red cubes on " + gameObject.name);
+        }
+
+        if (greenAudioSource == null)
+        {
+            Debug.LogWarning("No AudioSource assigned for green cubes on " + gameObject.name);
         }
 
         if (greenMazeManager == null)
@@ -29,36 +36,38 @@ public class CubeInteraction : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+ private void OnTriggerEnter(Collider other)
+{
+    Debug.Log($"Trigger detected: {other.gameObject.name} with tag {other.tag}");
+    if (other.CompareTag("Player") && !isFlashing && !hasCollided && !greenMazeManager.victoryAchieved)
     {
-        // Only proceed if the collider is tagged as "Player", victory hasn't been achieved, and no reset or previous collision has happened
-        if (other.CompareTag("Player") && !isResetting && !hasCollided && !greenMazeManager.victoryAchieved)
-        {
-            HandleCollision();
-        }
+        HandleCollision();
     }
+}
+
 
     private void HandleCollision()
     {
-        // Check the tag of this cube and apply color and audio accordingly
         if (CompareTag("redmaze"))
         {
             ChangeCubeColor(redColor);
 
-            // Play audio for "redmaze" if assigned and not already playing
-            if (cubeAudioSource != null && !cubeAudioSource.isPlaying)
+            if (redAudioSource != null && !redAudioSource.isPlaying)
             {
-                cubeAudioSource.Play();
+                redAudioSource.Play();
             }
 
-            // Start flashing and reset coroutine for all tagged cubes
             StartCoroutine(FlashAndResetAllCubes());
         }
         else if (CompareTag("greenmaze"))
         {
-            // Change color to green, mark as collided, and notify the manager
             ChangeCubeColor(greenColor);
-            hasCollided = true; // Prevent further collision counts
+            hasCollided = true;
+
+            if (greenAudioSource != null && !greenAudioSource.isPlaying)
+            {
+                greenAudioSource.Play();
+            }
 
             if (greenMazeManager != null)
             {
@@ -67,7 +76,6 @@ public class CubeInteraction : MonoBehaviour
         }
     }
 
-    // Change the color of this cube
     private void ChangeCubeColor(Color color)
     {
         Renderer renderer = GetComponent<Renderer>();
@@ -78,21 +86,18 @@ public class CubeInteraction : MonoBehaviour
         }
     }
 
-    // Coroutine to flash all cubes and reset color after a delay
     private IEnumerator FlashAndResetAllCubes()
     {
-        isResetting = true;
-        GameObject[] allCubes = GameObject.FindGameObjectsWithTag("redmaze");
-        GameObject[] greenCubes = GameObject.FindGameObjectsWithTag("greenmaze");
+        if (isFlashing) yield break; // Prevent duplicate flashing routines
+        isFlashing = true;
 
-        foreach (GameObject cube in greenCubes)
-        {
-            allCubes = Append(allCubes, cube);
-        }
+        // Get all "redmaze" and "greenmaze" cubes
+        List<GameObject> allCubes = new List<GameObject>(GameObject.FindGameObjectsWithTag("redmaze"));
+        allCubes.AddRange(GameObject.FindGameObjectsWithTag("greenmaze"));
 
-        // Flash all cubes with red color for the specified duration
         float elapsed = 0f;
         bool flashOn = true;
+
         while (elapsed < flashDuration)
         {
             foreach (GameObject cube in allCubes)
@@ -104,11 +109,11 @@ public class CubeInteraction : MonoBehaviour
                 }
             }
             flashOn = !flashOn;
-            elapsed += flashInterval;
             yield return new WaitForSeconds(flashInterval);
+            elapsed += flashInterval;
         }
 
-        // Reset all cubes to their original clear color after flashing
+        // Reset all cubes to their original clear color
         foreach (GameObject cube in allCubes)
         {
             Renderer renderer = cube.GetComponent<Renderer>();
@@ -117,29 +122,14 @@ public class CubeInteraction : MonoBehaviour
                 renderer.material.color = clear;
             }
 
-            // Reset hasCollided flag to allow re-collisions after reset, unless victory is achieved
             CubeInteraction cubeInteraction = cube.GetComponent<CubeInteraction>();
-            if (cubeInteraction != null && !greenMazeManager.victoryAchieved)
+            if (cubeInteraction != null && cubeInteraction.CompareTag("greenmaze"))
             {
                 cubeInteraction.hasCollided = false;
             }
         }
 
-        // Reset green counter if victory hasn't been achieved
-        if (!greenMazeManager.victoryAchieved)
-        {
-            greenMazeManager.ResetGreenCounter();
-        }
-
-        isResetting = false;
-    }
-
-    // Helper function to append game objects to an array
-    private GameObject[] Append(GameObject[] array, GameObject item)
-    {
-        GameObject[] result = new GameObject[array.Length + 1];
-        array.CopyTo(result, 0);
-        result[result.Length - 1] = item;
-        return result;
+        greenMazeManager.ResetGreenCounter();
+        isFlashing = false;
     }
 }

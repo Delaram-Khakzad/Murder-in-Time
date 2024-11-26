@@ -18,12 +18,12 @@ public class GreenMazeManager : MonoBehaviour
         }
     }
 
-    // Method to increment green counter and check for victory
     public void IncrementGreenCounter()
     {
-        if (!victoryAchieved) // Only increment if victory hasn't been achieved
+        if (!victoryAchieved)
         {
             greenCounter++;
+            Debug.Log($"Green Counter Incremented: {greenCounter}"); // Log green counter value
             if (greenCounter >= greenGoal)
             {
                 TriggerVictory();
@@ -31,26 +31,30 @@ public class GreenMazeManager : MonoBehaviour
         }
     }
 
-    // Method to reset green counter if needed
     public void ResetGreenCounter()
     {
         greenCounter = 0;
+        Debug.Log("Green Counter Reset");
     }
 
-    // Trigger victory sequence: play sound and show external object
     private void TriggerVictory()
     {
-        victoryAchieved = true; // Set victory flag to prevent further collisions
-        if (victoryAudioSource != null && !victoryAudioSource.isPlaying)
+        if (!victoryAchieved)
         {
-            victoryAudioSource.Play();
-        }
+            victoryAchieved = true; // Set victory flag to prevent further collisions
+            Debug.Log("Triggering Victory Sequence");
 
-        if (externalObject != null)
-        {
-            externalObject.SetActive(true);
-        }
+            if (victoryAudioSource != null && !victoryAudioSource.isPlaying)
+            {
+                victoryAudioSource.Play();
+            }
 
-        Debug.Log("Victory achieved! Seven green objects collided.");
+            if (externalObject != null)
+            {
+                externalObject.SetActive(true);
+            }
+
+            Debug.Log("Victory achieved! Seven green objects collided.");
+        }
     }
 }

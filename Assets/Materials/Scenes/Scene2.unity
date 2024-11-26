@@ -416,7 +416,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 50, z: 1}
+  m_Size: {x: 0.5, y: 50, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &126489828
 MeshRenderer:
@@ -480,15 +480,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1 &131867822
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +776,7 @@ Transform:
   m_GameObject: {fileID: 187765949}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9519768, y: -7.184925, z: 12.785933}
+  m_LocalPosition: {x: -3.9519768, y: -7.184925, z: 13.897}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -927,11 +928,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 50, z: 0.5}
+  m_Size: {x: 0, y: 20, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &203811930
 MeshRenderer:
@@ -995,15 +996,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1 &214686466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,6 +1041,7 @@ Transform:
   - {fileID: 1823247096}
   - {fileID: 922194724}
   - {fileID: 187765950}
+  - {fileID: 1621204635}
   - {fileID: 1294142717}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1173,7 +1176,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 50, z: 1}
+  m_Size: {x: 0.5, y: 50, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &287454646
 MeshRenderer:
@@ -1237,15 +1240,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1001 &287542125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1483,7 +1487,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 50, z: 1}
+  m_Size: {x: 0.5, y: 50, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &317705213
 MeshRenderer:
@@ -1547,15 +1551,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1001 &324620202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3585,7 +3590,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 50, z: 0.5}
+  m_Size: {x: 0.1, y: 50, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &903964543
 MeshRenderer:
@@ -3649,15 +3654,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1 &922194723
 GameObject:
   m_ObjectHideFlags: 0
@@ -3684,7 +3690,7 @@ Transform:
   m_GameObject: {fileID: 922194723}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9519768, y: -7.184925, z: 12.785933}
+  m_LocalPosition: {x: -3.9519768, y: -7.184925, z: 14.405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3932,15 +3938,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
-  flashDuration: 5
-  flashInterval: 0.5
+  flashDuration: 3
+  flashInterval: 0.2
+  autoResetInterval: 60
 --- !u!1 &1012854945
 GameObject:
   m_ObjectHideFlags: 0
@@ -4092,15 +4099,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1 &1047175190
 GameObject:
   m_ObjectHideFlags: 0
@@ -4186,7 +4194,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 50, z: 0.5}
+  m_Size: {x: 0.25, y: 50, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1076898170
 MeshRenderer:
@@ -4250,15 +4258,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1 &1083308829
 GameObject:
   m_ObjectHideFlags: 0
@@ -4826,7 +4835,7 @@ Transform:
   m_GameObject: {fileID: 1247069401}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -3.7396157, z: 1.95}
+  m_LocalPosition: {x: -2.492, y: -3.7396157, z: 1.95}
   m_LocalScale: {x: 0.5, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4851,7 +4860,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 50, z: 1}
+  m_Size: {x: 0.5, y: 50, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1247069404
 MeshRenderer:
@@ -4915,15 +4924,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1 &1284958177
 GameObject:
   m_ObjectHideFlags: 0
@@ -5620,6 +5630,134 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1387253200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1387253202}
+  - component: {fileID: 1387253201}
+  m_Layer: 0
+  m_Name: Backgroundaudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1387253201
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387253200}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d9a38d92a5bb74570a1966c669abeaa2, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.34
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1387253202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387253200}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2424.7625, y: -1265.5104, z: -21.83152}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1391687225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5771,7 +5909,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 50, z: 0.5}
+  m_Size: {x: 0.25, y: 50, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1398090617
 MeshRenderer:
@@ -5835,15 +5973,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1 &1459459140
 GameObject:
   m_ObjectHideFlags: 0
@@ -5926,7 +6065,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 50, z: 1}
+  m_Size: {x: 0.5, y: 50, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1459459144
 MeshRenderer:
@@ -5990,15 +6129,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1 &1493866485
 GameObject:
   m_ObjectHideFlags: 0
@@ -6283,6 +6423,134 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!1 &1621204633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1621204635}
+  - component: {fileID: 1621204634}
+  m_Layer: 0
+  m_Name: green sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1621204634
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621204633}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1b2516991dd8541eda8dc1969c792fdc, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1621204635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621204633}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -64.075005, y: 198.61244, z: 12.992306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 214686467}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1654344402
 GameObject:
   m_ObjectHideFlags: 0
@@ -6335,9 +6603,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 50, z: 0.5}
+  m_Size: {x: 0.1, y: 50, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1654344405
 MeshRenderer:
@@ -6401,15 +6669,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
-  flashInterval: 0.5
+  flashInterval: 0.3
+  autoResetInterval: 60
 --- !u!1 &1668785205
 GameObject:
   m_ObjectHideFlags: 0
@@ -6772,7 +7041,7 @@ Transform:
   m_GameObject: {fileID: 1720160444}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9519768, y: -7.184925, z: 12.785933}
+  m_LocalPosition: {x: -3.9519768, y: -7.184925, z: 14.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7488,7 +7757,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 50, z: 1}
+  m_Size: {x: 0.5, y: 50, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1890657894
 MeshRenderer:
@@ -7552,15 +7821,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1 &1936475337
 GameObject:
   m_ObjectHideFlags: 0
@@ -7896,7 +8166,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 50, z: 0.5}
+  m_Size: {x: 0.25, y: 50, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2105442816
 MeshRenderer:
@@ -7960,15 +8230,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1001 &2110597367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8100,7 +8371,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 50, z: 1}
+  m_Size: {x: 0.5, y: 50, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2121377653
 MeshRenderer:
@@ -8164,15 +8435,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d94961c400e046aba9acfb9bacd7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAudioSource: {fileID: 1823247097}
+  redAudioSource: {fileID: 1823247097}
+  greenAudioSource: {fileID: 1621204634}
   greenMazeManager: {fileID: 435923163}
   redColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  resetDelay: 3
   flashDuration: 5
   flashInterval: 0.5
+  autoResetInterval: 60
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -8183,5 +8455,6 @@ SceneRoots:
   - {fileID: 662729880}
   - {fileID: 1936475338}
   - {fileID: 1012854946}
+  - {fileID: 1387253202}
   - {fileID: 214686467}
   - {fileID: 1373946269}
