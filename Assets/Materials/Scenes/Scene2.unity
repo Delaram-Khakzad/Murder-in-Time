@@ -487,9 +487,9 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
 --- !u!1 &131867822
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +891,7 @@ GameObject:
   - component: {fileID: 203811930}
   - component: {fileID: 203811929}
   - component: {fileID: 203811932}
+  - component: {fileID: 203811933}
   m_Layer: 0
   m_Name: Cube14
   m_TagString: redmaze
@@ -928,11 +929,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0, y: 20, z: 0}
+  m_Size: {x: 0.1, y: 20, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &203811930
 MeshRenderer:
@@ -1003,9 +1004,36 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
+--- !u!54 &203811933
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203811927}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &214686466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,6 +1137,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 65224149489693858, guid: eded3844e29c2ec40bc278e2cbd31279, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1135,6 +1167,7 @@ GameObject:
   - component: {fileID: 287454646}
   - component: {fileID: 287454645}
   - component: {fileID: 287454648}
+  - component: {fileID: 287454649}
   m_Layer: 0
   m_Name: Cube12
   m_TagString: greenmaze
@@ -1150,8 +1183,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287454643}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.95, y: -3.7396157, z: 1.95}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
+  m_LocalPosition: {x: -1.9499999, y: -3.7396152, z: 1.9499999}
   m_LocalScale: {x: 0.5, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1247,9 +1280,36 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
+--- !u!54 &287454649
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287454643}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &287542125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1558,9 +1618,9 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
 --- !u!1001 &324620202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1700,6 +1760,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4029276965778842, guid: eded3844e29c2ec40bc278e2cbd31279, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65224149489693858, guid: eded3844e29c2ec40bc278e2cbd31279, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2145,7 +2209,7 @@ Transform:
   m_GameObject: {fileID: 435923162}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.3034134, y: -8.513452, z: 12.353558}
+  m_LocalPosition: {x: -6.3034134, y: -8.513452, z: 14.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3590,7 +3654,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 50, z: 0.1}
+  m_Size: {x: 0.1, y: 20, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &903964543
 MeshRenderer:
@@ -3661,9 +3725,9 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
 --- !u!1 &922194723
 GameObject:
   m_ObjectHideFlags: 0
@@ -3946,8 +4010,8 @@ MonoBehaviour:
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 3
-  flashInterval: 0.2
-  autoResetInterval: 60
+  flashInterval: 0.3
+  hasCollided: 0
 --- !u!1 &1012854945
 GameObject:
   m_ObjectHideFlags: 0
@@ -4106,9 +4170,9 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
 --- !u!1 &1047175190
 GameObject:
   m_ObjectHideFlags: 0
@@ -4153,6 +4217,7 @@ GameObject:
   - component: {fileID: 1076898170}
   - component: {fileID: 1076898169}
   - component: {fileID: 1076898172}
+  - component: {fileID: 1076898173}
   m_Layer: 0
   m_Name: Cube13
   m_TagString: redmaze
@@ -4192,9 +4257,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.25, y: 50, z: 0.25}
+  m_Size: {x: 0.1, y: 20, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1076898170
 MeshRenderer:
@@ -4265,9 +4330,36 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
+--- !u!54 &1076898173
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076898167}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1083308829
 GameObject:
   m_ObjectHideFlags: 0
@@ -4566,6 +4658,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 65224149489693858, guid: eded3844e29c2ec40bc278e2cbd31279, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4819,6 +4915,7 @@ GameObject:
   - component: {fileID: 1247069404}
   - component: {fileID: 1247069403}
   - component: {fileID: 1247069406}
+  - component: {fileID: 1247069407}
   m_Layer: 0
   m_Name: Cube15
   m_TagString: greenmaze
@@ -4931,9 +5028,36 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
+--- !u!54 &1247069407
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247069401}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1284958177
 GameObject:
   m_ObjectHideFlags: 0
@@ -5396,7 +5520,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -5868,6 +5992,7 @@ GameObject:
   - component: {fileID: 1398090617}
   - component: {fileID: 1398090616}
   - component: {fileID: 1398090619}
+  - component: {fileID: 1398090620}
   m_Layer: 0
   m_Name: Cube10
   m_TagString: redmaze
@@ -5909,7 +6034,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.25, y: 50, z: 0.25}
+  m_Size: {x: 0.1, y: 20, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1398090617
 MeshRenderer:
@@ -5980,9 +6105,36 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
+--- !u!54 &1398090620
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398090614}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1459459140
 GameObject:
   m_ObjectHideFlags: 0
@@ -6136,9 +6288,9 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
 --- !u!1 &1493866485
 GameObject:
   m_ObjectHideFlags: 0
@@ -6296,7 +6448,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -6564,6 +6716,7 @@ GameObject:
   - component: {fileID: 1654344405}
   - component: {fileID: 1654344404}
   - component: {fileID: 1654344407}
+  - component: {fileID: 1654344408}
   m_Layer: 0
   m_Name: Cube9
   m_TagString: redmaze
@@ -6605,7 +6758,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 50, z: 0.1}
+  m_Size: {x: 0.1, y: 10, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1654344405
 MeshRenderer:
@@ -6676,9 +6829,36 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
+  flashDuration: 3
   flashInterval: 0.3
-  autoResetInterval: 60
+  hasCollided: 0
+--- !u!54 &1654344408
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654344402}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1668785205
 GameObject:
   m_ObjectHideFlags: 0
@@ -7690,6 +7870,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 65224149489693858, guid: eded3844e29c2ec40bc278e2cbd31279, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -7716,6 +7900,7 @@ GameObject:
   - component: {fileID: 1890657894}
   - component: {fileID: 1890657893}
   - component: {fileID: 1890657896}
+  - component: {fileID: 1890657897}
   m_Layer: 0
   m_Name: Cube11
   m_TagString: greenmaze
@@ -7828,9 +8013,36 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
+--- !u!54 &1890657897
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890657891}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1936475337
 GameObject:
   m_ObjectHideFlags: 0
@@ -8125,6 +8337,7 @@ GameObject:
   - component: {fileID: 2105442816}
   - component: {fileID: 2105442815}
   - component: {fileID: 2105442818}
+  - component: {fileID: 2105442819}
   m_Layer: 0
   m_Name: Cube5
   m_TagString: redmaze
@@ -8164,9 +8377,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.25, y: 50, z: 0.25}
+  m_Size: {x: 0.1, y: 20, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2105442816
 MeshRenderer:
@@ -8237,9 +8450,36 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
+--- !u!54 &2105442819
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105442813}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2110597367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8330,6 +8570,7 @@ GameObject:
   - component: {fileID: 2121377653}
   - component: {fileID: 2121377652}
   - component: {fileID: 2121377655}
+  - component: {fileID: 2121377656}
   m_Layer: 0
   m_Name: Cube8
   m_TagString: greenmaze
@@ -8442,9 +8683,36 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 0.5882353}
   clear: {r: 0, g: 0, b: 0, a: 0.19607843}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 5
-  flashInterval: 0.5
-  autoResetInterval: 60
+  flashDuration: 3
+  flashInterval: 0.3
+  hasCollided: 0
+--- !u!54 &2121377656
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121377650}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

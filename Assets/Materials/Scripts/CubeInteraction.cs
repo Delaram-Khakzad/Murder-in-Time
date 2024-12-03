@@ -13,19 +13,22 @@ public class CubeInteraction : MonoBehaviour
     public Color flashColor = Color.red; // Flashing color (red)
     public float flashDuration = 5.0f; // Duration for flashing effect
     public float flashInterval = 0.5f; // Interval for flash effect
-    public float autoResetInterval = 60.0f; // Interval for automatic reset
 
     private bool isFlashing = false; // Flag to indicate flashing is in progress
-    private bool hasCollided = false; // Flag to prevent multiple counts for one collision
+    public bool hasCollided = false; // Flag to prevent multiple counts for one collision
+
+    // Static variable to track global flashing state
+    private static bool isGlobalFlashingActive = false;
 
     private void Start()
     {
-        if (redAudioSource == null)
+        // Validate references
+        if (redAudioSource == null && CompareTag("redmaze"))
         {
             Debug.LogWarning("No AudioSource assigned for red cubes on " + gameObject.name);
         }
 
-        if (greenAudioSource == null)
+        if (greenAudioSource == null && CompareTag("greenmaze"))
         {
             Debug.LogWarning("No AudioSource assigned for green cubes on " + gameObject.name);
         }
@@ -36,28 +39,48 @@ public class CubeInteraction : MonoBehaviour
         }
     }
 
- private void OnTriggerEnter(Collider other)
-{
-    Debug.Log($"Trigger detected: {other.gameObject.name} with tag {other.tag}");
-    if (other.CompareTag("Player") && !isFlashing && !hasCollided && !greenMazeManager.victoryAchieved)
+    private void OnTriggerEnter(Collider other)
     {
-        HandleCollision();
-    }
-}
+        // Prevent any collisions during global flashing
+        if (isGlobalFlashingActive)
+        {
+            Debug.Log("Collision blocked during global flashing");
+            return;
+        }
 
+        // Only proceed if it's the player and conditions are met
+        if (other.CompareTag("Player") && 
+            !isFlashing && 
+            !hasCollided && 
+            !greenMazeManager.victoryAchieved)
+        {
+            HandleCollision();
+        }
+    }
 
     private void HandleCollision()
     {
+        // Additional check to prevent collision after victory
+        if (greenMazeManager.victoryAchieved)
+        {
+            Debug.Log("Victory already achieved. Ignoring collision.");
+            return;
+        }
+
         if (CompareTag("redmaze"))
         {
-            ChangeCubeColor(redColor);
-
-            if (redAudioSource != null && !redAudioSource.isPlaying)
+            // Only allow flashing if victory has not been achieved
+            if (!greenMazeManager.victoryAchieved)
             {
-                redAudioSource.Play();
-            }
+                ChangeCubeColor(redColor);
 
-            StartCoroutine(FlashAndResetAllCubes());
+                if (redAudioSource != null && !redAudioSource.isPlaying)
+                {
+                    redAudioSource.Play();
+                }
+
+                StartCoroutine(FlashAndResetAllCubes());
+            }
         }
         else if (CompareTag("greenmaze"))
         {
@@ -88,19 +111,32 @@ public class CubeInteraction : MonoBehaviour
 
     private IEnumerator FlashAndResetAllCubes()
     {
+        // Prevent flashing if victory is achieved
+        if (greenMazeManager.victoryAchieved)
+        {
+            Debug.Log("Cannot flash cubes - victory already achieved");
+            yield break;
+        }
+
         if (isFlashing) yield break; // Prevent duplicate flashing routines
         isFlashing = true;
+        isGlobalFlashingActive = true; // Set global flashing state
 
-        // Get all "redmaze" and "greenmaze" cubes
-        List<GameObject> allCubes = new List<GameObject>(GameObject.FindGameObjectsWithTag("redmaze"));
-        allCubes.AddRange(GameObject.FindGameObjectsWithTag("greenmaze"));
+        // Only get red maze cubes for flashing
+        List<GameObject> redCubes = new List<GameObject>(GameObject.FindGameObjectsWithTag("redmaze"));
 
         float elapsed = 0f;
         bool flashOn = true;
 
         while (elapsed < flashDuration)
         {
-            foreach (GameObject cube in allCubes)
+            // Additional check to stop flashing if victory is achieved
+            if (greenMazeManager.victoryAchieved)
+            {
+                break;
+            }
+
+            foreach (GameObject cube in redCubes)
             {
                 Renderer renderer = cube.GetComponent<Renderer>();
                 if (renderer != null)
@@ -113,8 +149,19 @@ public class CubeInteraction : MonoBehaviour
             elapsed += flashInterval;
         }
 
-        // Reset all cubes to their original clear color
-        foreach (GameObject cube in allCubes)
+        // Reset only red maze cubes
+        foreach (GameObject cube in redCubes)
+        {
+            Renderer renderer = cube.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material.color = clear;
+            }
+        }
+
+        // Reset green maze cubes separately
+        GameObject[] greenCubes = GameObject.FindGameObjectsWithTag("greenmaze");
+        foreach (GameObject cube in greenCubes)
         {
             Renderer renderer = cube.GetComponent<Renderer>();
             if (renderer != null)
@@ -123,13 +170,19 @@ public class CubeInteraction : MonoBehaviour
             }
 
             CubeInteraction cubeInteraction = cube.GetComponent<CubeInteraction>();
-            if (cubeInteraction != null && cubeInteraction.CompareTag("greenmaze"))
+            if (cubeInteraction != null)
             {
                 cubeInteraction.hasCollided = false;
             }
         }
 
-        greenMazeManager.ResetGreenCounter();
+        // Only reset if victory has not been achieved
+        if (!greenMazeManager.victoryAchieved)
+        {
+            greenMazeManager.ResetGreenCounter();
+        }
+        
         isFlashing = false;
+        isGlobalFlashingActive = false; // Reset global flashing state
     }
 }
