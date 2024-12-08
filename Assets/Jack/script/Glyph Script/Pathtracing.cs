@@ -25,6 +25,10 @@ public class Pathtracing : MonoBehaviour
     public GameObject Canvas;
     public GameObject successText;
     public GameObject MidAirIndicator;
+    public GameObject documents;
+    public GameObject message;
+    public AudioClip messageAudioForMurder; //voice aids
+    
     private bool Solved = false;
     private bool failed = false;
     public Camera arCamera; // Reference to the AR camera
@@ -33,11 +37,56 @@ public class Pathtracing : MonoBehaviour
     {
         // Initialization code if needed
     }
+    // Check if there is a valid touch input
+    private bool IsTouchInput()
+    {
+        return Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began;
+    }
 
+    // Get the position of the touch or mouse click
+    private Vector3 GetInputPosition()
+    {
+        if (Input.touchCount > 0)
+        {
+            return Input.GetTouch(0).position; // Touch position
+        }
+        return Input.mousePosition; // Mouse click position
+    }
     void Update()
     {
         if (Solved)
         {
+            // Detect user input (mouse click or touch)
+            if (Input.GetMouseButtonDown(0) || IsTouchInput())
+            {
+                // Cast a ray from the touch or click position
+                Vector3 inputPosition = GetInputPosition();
+
+                Ray rayforDocument = arCamera.ScreenPointToRay(inputPosition);
+                RaycastHit hit;
+
+                // Check if the ray hits an object
+                if (Physics.Raycast(rayforDocument, out hit))
+                {
+
+                    // Check if the clicked/touched object is the current object
+                    if (hit.collider.gameObject == documents)
+                    {
+                        Debug.Log("hit documents");
+                        // Activate the target object
+                        if (message != null)
+                        {
+                            message.SetActive(true);
+                            audioSource.clip =messageAudioForMurder;
+                            audioSource.Play();
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Target object is not assigned!");
+                        }
+                    }
+                }
+            }
             return;
         }
         if (failed)
