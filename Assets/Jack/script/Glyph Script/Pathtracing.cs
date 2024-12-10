@@ -148,6 +148,10 @@ public class Pathtracing : MonoBehaviour
         Solved = true;
         Canvas.SetActive(false);
         MidAirIndicator.SetActive(false);
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
     private void Fail() //What will happen after the user fails on solving
     {
